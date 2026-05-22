@@ -17,7 +17,7 @@ export default function GalleryPreview() {
         href="/gallery"
         className="text-[10px] tracking-[3px] text-muted uppercase font-sans border-b border-warm-grey pb-0.5 hover:text-ink hover:border-ink transition-colors"
       >
-        View Full Gallery →
+        View Full Gallery <span aria-hidden="true">→</span>
       </Link>
     </section>
   )

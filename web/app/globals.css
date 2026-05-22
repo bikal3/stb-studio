@@ -13,7 +13,3 @@
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-serif: var(--font-playfair), Georgia, serif;
 }
-
-body {
-  background-color: #faf7f4;
-}

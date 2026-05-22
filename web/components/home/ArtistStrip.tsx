@@ -9,7 +9,7 @@ export default function ArtistStrip() {
         <p className="text-[11px] tracking-[3px] text-muted uppercase font-sans mb-2">
           {artistContent.label}
         </p>
-        <h2 className="font-serif italic text-warm-white text-xl leading-snug">
+        <h2 className="font-serif italic font-light text-warm-white text-xl leading-snug">
           {artistContent.name}
         </h2>
         <p className="text-[11px] text-muted font-sans mt-2 leading-relaxed">
