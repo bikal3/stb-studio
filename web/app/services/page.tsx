@@ -1,6 +1,6 @@
 import SectionLabel from '@/components/SectionLabel'
 import ServiceCategorySection from '@/components/services/ServiceCategorySection'
-import { services } from '@/lib/content'
+import { services, bookingCtaLabel } from '@/lib/content'
 import { whatsappUrl } from '@/lib/links'
 import type { Metadata } from 'next'
 
@@ -37,7 +37,7 @@ export default function ServicesPage() {
           rel="noopener noreferrer"
           className="border border-warm-white text-warm-white text-[10px] tracking-[3px] uppercase font-sans px-6 py-3 hover:bg-warm-white hover:text-ink transition-colors"
         >
-          Book a Consult
+          {bookingCtaLabel}
         </a>
       </section>
     </div>

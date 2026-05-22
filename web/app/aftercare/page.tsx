@@ -1,5 +1,5 @@
 import SectionLabel from '@/components/SectionLabel'
-import { aftercareInstructions, touchUpPolicy, noRefundPolicy } from '@/lib/content'
+import { aftercareInstructions, touchUpPolicy, noRefundPolicy, aftercareIntro, aftercareSignOff } from '@/lib/content'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -15,8 +15,7 @@ export default function AftercarePage() {
         <SectionLabel className="mb-2">Care</SectionLabel>
         <h1 className="font-serif italic font-light text-4xl text-ink">Aftercare</h1>
         <p className="text-sm text-muted font-sans mt-3 max-w-sm leading-relaxed">
-          It&apos;s important to care for your tattoo, no matter its size. Follow these
-          guidelines to keep your ink looking its best.
+          {aftercareIntro}
         </p>
       </section>
 
@@ -33,7 +32,7 @@ export default function AftercarePage() {
           ))}
         </ol>
         <p className="mt-8 text-sm font-sans text-ink font-medium tracking-wide">
-          ENJOY YOUR NEW INK, FROM THE STB STUDIO TEAM.
+          {aftercareSignOff}
         </p>
       </section>
 

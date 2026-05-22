@@ -159,6 +159,8 @@ export const noRefundPolicy =
   'All payments made to STB Studio are non-refundable under any circumstances, regardless of changes in situation, unmet expectations, or missed appointments.'
 
 export const tattooHistoryContent = {
+  heading: 'The Art & Its Roots',
+  nepalHeading: "Nepal's Tattoo Traditions",
   intro:
     "The history of tattooing is rich and varied, with each culture bringing its own unique traditions and meanings to the art form. In ancient Egypt, tattoos were used for religious purposes, often depicting symbols of protection or devotion to a particular deity. In the Polynesian Islands, tattoos were a way to showcase social status and lineage, with intricate designs representing a person's place within their community.",
   nepal:
@@ -175,3 +177,15 @@ export const studioServiceContent = {
 }
 
 export const galleryPreviewCount = 6
+
+export const beYourselfContent = {
+  heading: 'Be Unapologetically You',
+  body: "Life is too short to be concerned with the opinions of others. It's perfectly fine to express yourself. It's perfectly fine to have one tattoo, and it's also perfectly fine to have a hundred. Just be yourself. STB Studio supports you in being yourself.",
+}
+
+export const aftercareIntro =
+  "It's important to care for your tattoo, no matter its size. Follow these guidelines to keep your ink looking its best."
+
+export const aftercareSignOff = 'ENJOY YOUR NEW INK, FROM THE STB STUDIO TEAM.'
+
+export const bookingCtaLabel = 'Book a Consult'

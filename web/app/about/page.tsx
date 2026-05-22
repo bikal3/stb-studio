@@ -1,10 +1,6 @@
 import SectionLabel from '@/components/SectionLabel'
 import PlaceholderImage from '@/components/PlaceholderImage'
-import {
-  artistContent,
-  tattooHistoryContent,
-  studioServiceContent,
-} from '@/lib/content'
+import { artistContent, tattooHistoryContent, studioServiceContent, beYourselfContent } from '@/lib/content'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -52,9 +48,9 @@ export default function AboutPage() {
       {/* Tattoo history */}
       <section className="bg-ink-light px-8 py-12">
         <SectionLabel className="mb-3">History</SectionLabel>
-        <h2 className="font-serif italic font-light text-2xl text-warm-white mb-6">The Art &amp; Its Roots</h2>
+        <h2 className="font-serif italic font-light text-2xl text-warm-white mb-6">{tattooHistoryContent.heading}</h2>
         <p className="text-sm font-sans text-warm-grey leading-[1.9] mb-4">{tattooHistoryContent.intro}</p>
-        <h3 className="font-serif italic text-warm-white text-lg mt-6 mb-3">Nepal&apos;s Tattoo Traditions</h3>
+        <h3 className="font-serif italic text-warm-white text-lg mt-6 mb-3">{tattooHistoryContent.nepalHeading}</h3>
         <p className="text-sm font-sans text-warm-grey leading-[1.9] mb-4">{tattooHistoryContent.nepal}</p>
         <p className="text-sm font-sans text-warm-grey leading-[1.9]">{tattooHistoryContent.today}</p>
       </section>
@@ -62,12 +58,10 @@ export default function AboutPage() {
       {/* Be unapologetically you */}
       <section className="px-8 py-12 text-center max-w-xl mx-auto">
         <h2 className="font-serif italic font-light text-3xl text-ink mb-4">
-          Be Unapologetically You
+          {beYourselfContent.heading}
         </h2>
         <p className="text-sm font-sans text-muted leading-[1.9]">
-          Life is too short to be concerned with the opinions of others. It&apos;s perfectly fine to
-          express yourself. It&apos;s perfectly fine to have one tattoo, and it&apos;s also perfectly fine
-          to have a hundred. Just be yourself. STB Studio supports you in being yourself.
+          {beYourselfContent.body}
         </p>
       </section>
     </div>
