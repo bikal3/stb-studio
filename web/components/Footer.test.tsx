@@ -9,7 +9,7 @@ jest.mock('@/lib/links', () => ({
 describe('Footer', () => {
   it('renders studio name', () => {
     render(<Footer />)
-    expect(screen.getByText('STB STUDIO')).toBeInTheDocument()
+    expect(screen.getByText('STB Studio')).toBeInTheDocument()
   })
 
   it('renders location', () => {

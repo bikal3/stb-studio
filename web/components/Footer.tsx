@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-ink px-6 py-7 flex justify-between items-center">
       <div>
         <p className="text-[12px] tracking-[3px] text-warm-white uppercase font-sans">
-          {siteConfig.name.toUpperCase()}
+          {siteConfig.name}
         </p>
         <p className="text-[10px] text-muted font-sans mt-1">{siteConfig.location}</p>
       </div>
