@@ -42,6 +42,27 @@ const galleryImages = [
   { src: '/images/old-school/IMG_8854.jpg', alt: 'Old school tattoo by Susmita Tamang Bomjan', type: 'Old School' },
   { src: '/images/old-school/IMG_8855.jpg', alt: 'Old school tattoo by Susmita Tamang Bomjan', type: 'Old School' },
   { src: '/images/old-school/IMG_8856.jpg', alt: 'Old school tattoo by Susmita Tamang Bomjan', type: 'Old School' },
+  // Black & Grey
+  { src: '/images/black-and-grey/IMG_8817.jpg', alt: 'Black and grey tattoo by Susmita Tamang Bomjan', type: 'Black & Grey' },
+  { src: '/images/black-and-grey/IMG_8862.jpg', alt: 'Black and grey tattoo by Susmita Tamang Bomjan', type: 'Black & Grey' },
+  { src: '/images/black-and-grey/IMG_8863.jpg', alt: 'Black and grey tattoo by Susmita Tamang Bomjan', type: 'Black & Grey' },
+  { src: '/images/black-and-grey/IMG_8864.jpg', alt: 'Black and grey tattoo by Susmita Tamang Bomjan', type: 'Black & Grey' },
+  { src: '/images/black-and-grey/IMG_8865.jpg', alt: 'Black and grey tattoo by Susmita Tamang Bomjan', type: 'Black & Grey' },
+  { src: '/images/black-and-grey/IMG_8867.jpg', alt: 'Black and grey tattoo by Susmita Tamang Bomjan', type: 'Black & Grey' },
+  // Floral
+  { src: '/images/floral/IMG_8820.jpg', alt: 'Floral tattoo by Susmita Tamang Bomjan', type: 'Floral' },
+  { src: '/images/floral/IMG_8824.jpg', alt: 'Floral tattoo by Susmita Tamang Bomjan', type: 'Floral' },
+  { src: '/images/floral/IMG_8825.jpg', alt: 'Floral tattoo by Susmita Tamang Bomjan', type: 'Floral' },
+  { src: '/images/floral/IMG_8882.jpg', alt: 'Floral tattoo by Susmita Tamang Bomjan', type: 'Floral' },
+  { src: '/images/floral/IMG_8883.jpg', alt: 'Floral tattoo by Susmita Tamang Bomjan', type: 'Floral' },
+  { src: '/images/floral/IMG_8885.jpg', alt: 'Floral tattoo by Susmita Tamang Bomjan', type: 'Floral' },
+  // Micro Realism
+  { src: '/images/micro-realism/IMG_8808.jpg', alt: 'Micro realism tattoo by Susmita Tamang Bomjan', type: 'Micro Realism' },
+  { src: '/images/micro-realism/IMG_8809.jpg', alt: 'Micro realism tattoo by Susmita Tamang Bomjan', type: 'Micro Realism' },
+  { src: '/images/micro-realism/IMG_8812.jpg', alt: 'Micro realism tattoo by Susmita Tamang Bomjan', type: 'Micro Realism' },
+  { src: '/images/micro-realism/IMG_8813.jpg', alt: 'Micro realism tattoo by Susmita Tamang Bomjan', type: 'Micro Realism' },
+  { src: '/images/micro-realism/IMG_8860 2.jpg', alt: 'Micro realism tattoo by Susmita Tamang Bomjan', type: 'Micro Realism' },
+  { src: '/images/micro-realism/IMG_8881.jpg', alt: 'Micro realism tattoo by Susmita Tamang Bomjan', type: 'Micro Realism' },
 ]
 
 export default function GalleryPage() {
