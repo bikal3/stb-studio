@@ -5,12 +5,12 @@ import { artistContent } from '@/lib/content'
 export default function ArtistStrip() {
   return (
     <section className="flex flex-col md:flex-row min-h-[480px]">
-      <div className="relative h-72 md:h-auto md:w-1/2 flex-shrink-0">
+      <div className="relative h-72 md:h-auto md:w-1/2 flex-shrink-0 bg-ink">
         <Image
           src="/images/profile-pic.jpg"
           alt={artistContent.name}
           fill
-          className="object-cover object-top"
+          className="object-contain object-center"
           priority
         />
       </div>
