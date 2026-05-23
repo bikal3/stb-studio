@@ -4,16 +4,24 @@ const features = [
     description: 'Custom designs crafted for you.',
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12">
-        {/* needle tip */}
-        <path d="M30 6 L42 18 L20 40 L12 42 L14 34 Z" />
-        <path d="M26 10 L38 22" />
-        {/* ink drop */}
-        <path d="M8 42 C8 38 14 34 14 34" />
-        {/* decorative dots around */}
-        <circle cx="38" cy="10" r="1.5" fill="currentColor" stroke="none" />
-        <circle cx="10" cy="38" r="1" fill="currentColor" stroke="none" />
-        {/* small lotus/flower motif */}
-        <path d="M6 28 Q8 24 10 28 Q12 24 14 28" strokeWidth="1" />
+        {/* machine body */}
+        <rect x="10" y="8" width="22" height="14" rx="2" />
+        {/* coil detail on body */}
+        <line x1="15" y1="13" x2="27" y2="13" strokeWidth="1" />
+        <line x1="15" y1="16" x2="27" y2="16" strokeWidth="1" />
+        {/* side contact screw */}
+        <circle cx="35" cy="12" r="3" />
+        <line x1="35" y1="10" x2="35" y2="14" strokeWidth="1" />
+        {/* grip / handle */}
+        <rect x="17" y="22" width="8" height="16" rx="3" />
+        {/* grip texture lines */}
+        <line x1="17" y1="26" x2="25" y2="26" strokeWidth="0.8" />
+        <line x1="17" y1="29" x2="25" y2="29" strokeWidth="0.8" />
+        <line x1="17" y1="32" x2="25" y2="32" strokeWidth="0.8" />
+        {/* needle tube */}
+        <line x1="21" y1="38" x2="21" y2="44" strokeWidth="1.2" />
+        {/* needle tip point */}
+        <path d="M19 44 L21 47 L23 44" />
       </svg>
     ),
   },
