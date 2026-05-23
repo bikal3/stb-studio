@@ -22,6 +22,9 @@ export default function Navbar() {
         <Link href="/gallery" className="text-[11px] tracking-wide text-muted font-sans hover:text-ink transition-colors">
           Gallery
         </Link>
+        <Link href="/artists" className="text-[11px] tracking-wide text-muted font-sans hover:text-ink transition-colors">
+          Artists
+        </Link>
         <Link href="/about" className="text-[11px] tracking-wide text-muted font-sans hover:text-ink transition-colors">
           About
         </Link>
