@@ -12,4 +12,5 @@
 
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-serif: var(--font-playfair), Georgia, serif;
+  --font-signature: var(--font-great-vibes), cursive;
 }
