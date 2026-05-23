@@ -16,7 +16,7 @@ export default function AboutPage() {
       <section className="bg-cream px-8 py-16 flex flex-col items-center text-center gap-4">
         <div className="relative w-32 h-32 rounded-full overflow-hidden">
           <Image
-            src="/images/profile-pic.jpg"
+            src="/images/profile-pic.png"
             alt="Susmita Tamang Bomjan"
             fill
             className="object-cover"

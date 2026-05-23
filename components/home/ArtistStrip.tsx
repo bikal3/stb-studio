@@ -7,7 +7,7 @@ export default function ArtistStrip() {
     <section className="flex flex-col md:flex-row min-h-[480px]">
       <div className="relative h-72 md:h-auto md:w-1/2 flex-shrink-0 bg-ink">
         <Image
-          src="/images/profile-pic.jpg"
+          src="/images/profile-pic.png"
           alt={artistContent.name}
           fill
           className="object-contain object-center"
