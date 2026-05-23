@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import GalleryGrid from '@/components/gallery/GalleryGrid'
 import SectionLabel from '@/components/SectionLabel'
 import type { Metadata } from 'next'
 
@@ -25,19 +25,7 @@ export default function GalleryPage() {
         <SectionLabel className="mb-2">Portfolio</SectionLabel>
         <h1 className="font-serif italic font-light text-4xl text-ink">Gallery</h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-        {galleryImages.map((image, i) => (
-          <div key={i} className="relative aspect-square w-full overflow-hidden bg-warm-grey">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
-      </div>
+      <GalleryGrid images={galleryImages} />
     </div>
   )
 }
