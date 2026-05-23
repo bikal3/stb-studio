@@ -10,7 +10,9 @@ type Props = {
 }
 
 export default function Lightbox({ images, initialIndex, onClose }: Props) {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex)
+  const [currentIndex, setCurrentIndex] = useState(
+    Math.max(0, Math.min(initialIndex, images.length - 1))
+  )
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -33,7 +35,7 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
   return (
     <div
       className="fixed inset-0 z-50 bg-black flex items-center justify-center"
-      onClick={onClose}
+      onClick={e => { if (e.target === e.currentTarget) onClose() }}
       role="dialog"
       aria-modal="true"
       aria-label="Image viewer"
