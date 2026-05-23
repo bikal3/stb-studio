@@ -26,8 +26,7 @@ export default function ArtistStrip() {
         <p className="text-sm text-muted font-sans leading-relaxed mb-8 max-w-sm">
           {artistContent.pullQuote}
         </p>
-        <p className="font-signature text-4xl text-warm-white mb-8">Susmita</p>
-        <Link
+<Link
           href="/about"
           className="self-start border border-warm-white text-warm-white text-[10px] tracking-[3px] uppercase font-sans px-6 py-3 hover:bg-warm-white hover:text-ink transition-colors"
         >
