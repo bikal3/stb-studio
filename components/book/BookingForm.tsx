@@ -7,17 +7,26 @@ type Status = 'idle' | 'success'
 
 export default function BookingForm() {
   const [status, setStatus] = useState<Status>('idle')
+  const [daysError, setDaysError] = useState(false)
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
+    const selectedDays = data.getAll('days') as string[]
+
+    if (selectedDays.length === 0) {
+      setDaysError(true)
+      return
+    }
+
     const name = data.get('name') as string
     const email = data.get('email') as string
     const style = data.get('style') as string
     const placement = data.get('placement') as string
+    const days = selectedDays.join(', ')
     const message = (data.get('message') as string) ?? ''
 
-    window.location.href = bookingMailtoUrl(name, email, style, placement, message)
+    window.location.href = bookingMailtoUrl(name, email, style, placement, days, message)
     setStatus('success')
   }
 
@@ -71,6 +80,28 @@ export default function BookingForm() {
         required
         className={inputClass}
       />
+      <fieldset>
+        <legend className="text-[11px] font-sans text-muted uppercase tracking-[1px] mb-2">
+          Preferred days <span className="text-accent">*</span>
+        </legend>
+        <div className="flex flex-wrap gap-x-4 gap-y-2">
+          {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) => (
+            <label key={day} className="flex items-center gap-1.5 text-sm font-sans text-ink cursor-pointer">
+              <input
+                type="checkbox"
+                name="days"
+                value={day}
+                onChange={() => setDaysError(false)}
+                className="accent-ink w-3.5 h-3.5"
+              />
+              {day}
+            </label>
+          ))}
+        </div>
+        {daysError && (
+          <p className="text-[11px] font-sans text-red-500 mt-1.5">Please select at least one preferred day.</p>
+        )}
+      </fieldset>
       <textarea
         name="message"
         placeholder="Tell Susmita about your idea..."
