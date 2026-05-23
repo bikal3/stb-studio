@@ -13,10 +13,9 @@ export default function ServicesPreview() {
             <p className="text-[12px] tracking-[2px] uppercase text-ink font-sans font-semibold">
               {service.name}
             </p>
-            <p className="text-[11px] text-muted font-sans mt-1">
-              {service.duration ? `${service.duration} · ` : ''}
-              {service.price}
-            </p>
+            {service.duration && (
+              <p className="text-[11px] text-muted font-sans mt-1">{service.duration}</p>
+            )}
           </div>
         ))}
       </div>

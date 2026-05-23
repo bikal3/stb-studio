@@ -13,10 +13,9 @@ export default function ServiceCard({ service }: Props) {
       <p className="text-[11px] text-muted font-sans mt-1 leading-relaxed">
         {service.description}
       </p>
-      <p className="text-[12px] text-ink font-sans font-medium mt-2">
-        {service.duration ? `${service.duration} · ` : ''}
-        {service.price}
-      </p>
+      {service.duration && (
+        <p className="text-[11px] text-muted font-sans mt-1">{service.duration}</p>
+      )}
     </div>
   )
 }

@@ -19,6 +19,9 @@ export default function Navbar() {
         </span>
       </Link>
       <div className="flex items-center gap-6">
+        <Link href="/" className="text-[11px] tracking-wide text-muted font-sans hover:text-ink transition-colors">
+          Home
+        </Link>
         <Link href="/gallery" className="text-[11px] tracking-wide text-muted font-sans hover:text-ink transition-colors">
           Gallery
         </Link>
