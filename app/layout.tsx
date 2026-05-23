@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Great_Vibes } from "next/font/google";
+import { Playfair_Display, Inter, Sacramento } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,7 +16,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const greatVibes = Great_Vibes({
+const sacramento = Sacramento({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-great-vibes",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${greatVibes.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} ${sacramento.variable}`}>
       <body className="bg-warm-white text-ink font-sans">
         <Navbar />
         <main>{children}</main>
