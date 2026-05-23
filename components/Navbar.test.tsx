@@ -1,10 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import Navbar from '@/components/Navbar'
 
-jest.mock('@/lib/links', () => ({
-  whatsappUrl: () => 'https://wa.me/9779841234567',
-}))
-
 describe('Navbar', () => {
   it('renders the studio name', () => {
     render(<Navbar />)
@@ -18,9 +14,9 @@ describe('Navbar', () => {
     expect(screen.getByRole('link', { name: /services/i })).toBeInTheDocument()
   })
 
-  it('Book button links to WhatsApp', () => {
+  it('Book button links to /book', () => {
     render(<Navbar />)
     const bookLink = screen.getByRole('link', { name: /book/i })
-    expect(bookLink).toHaveAttribute('href', 'https://wa.me/9779841234567')
+    expect(bookLink).toHaveAttribute('href', '/book')
   })
 })

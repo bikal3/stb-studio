@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { whatsappUrl } from '@/lib/links'
 
 export default function Navbar() {
   return (
@@ -20,14 +19,12 @@ export default function Navbar() {
         <Link href="/services" className="text-[11px] tracking-wide text-muted font-sans hover:text-ink transition-colors">
           Services
         </Link>
-        <a
-          href={whatsappUrl("I'd like to book a tattoo consult at STB Studio")}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/book"
           className="bg-ink text-warm-white text-[10px] tracking-[2px] uppercase font-sans px-4 py-2 hover:bg-ink-light transition-colors"
         >
           Book
-        </a>
+        </Link>
       </div>
     </nav>
   )
