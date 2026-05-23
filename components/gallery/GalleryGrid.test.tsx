@@ -2,14 +2,37 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 
 const images = [
-  { src: '/images/tatto-1.png', alt: 'Tattoo 1' },
-  { src: '/images/tatto-2.png', alt: 'Tattoo 2' },
+  { src: '/images/fine-line/img1.jpg', alt: 'Tattoo 1', type: 'Fine Line' },
+  { src: '/images/colour-tattoo/img2.jpg', alt: 'Tattoo 2', type: 'Colour Tattoo' },
+  { src: '/images/old-school/img3.jpg', alt: 'Tattoo 3', type: 'Old School' },
 ]
 
 describe('GalleryGrid', () => {
-  it('renders a button for each image', () => {
+  it('renders a button for each image when All is active', () => {
     render(<GalleryGrid images={images} />)
-    expect(screen.getAllByRole('button', { name: /view/i })).toHaveLength(2)
+    expect(screen.getAllByRole('button', { name: /view/i })).toHaveLength(3)
+  })
+
+  it('renders filter tabs for All and each type', () => {
+    render(<GalleryGrid images={images} />)
+    expect(screen.getByRole('button', { name: /^all$/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /fine line/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /colour tattoo/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /old school/i })).toBeInTheDocument()
+  })
+
+  it('filters images when a type tab is clicked', () => {
+    render(<GalleryGrid images={images} />)
+    fireEvent.click(screen.getByRole('button', { name: /fine line/i }))
+    expect(screen.getAllByRole('button', { name: /view/i })).toHaveLength(1)
+    expect(screen.getByLabelText('View Tattoo 1')).toBeInTheDocument()
+  })
+
+  it('shows all images when All tab is clicked after filtering', () => {
+    render(<GalleryGrid images={images} />)
+    fireEvent.click(screen.getByRole('button', { name: /fine line/i }))
+    fireEvent.click(screen.getByRole('button', { name: /^all$/i }))
+    expect(screen.getAllByRole('button', { name: /view/i })).toHaveLength(3)
   })
 
   it('lightbox is not shown initially', () => {
