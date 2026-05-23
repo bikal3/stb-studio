@@ -3,6 +3,7 @@ import FeaturesStrip from '@/components/home/FeaturesStrip'
 import ArtistStrip from '@/components/home/ArtistStrip'
 import GalleryPreview from '@/components/home/GalleryPreview'
 import ServicesPreview from '@/components/home/ServicesPreview'
+import OpenHours from '@/components/home/OpenHours'
 import PhilosophyQuote from '@/components/home/PhilosophyQuote'
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <ArtistStrip />
       <GalleryPreview />
       <ServicesPreview />
+      <OpenHours />
       <PhilosophyQuote />
     </>
   )
