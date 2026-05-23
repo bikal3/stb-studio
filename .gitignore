@@ -6,6 +6,8 @@
 # local tools
 .superpowers/
 .claude/
+AGENTS.md
+CLAUDE.md
 
 # dependencies
 /node_modules
