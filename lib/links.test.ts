@@ -1,4 +1,4 @@
-import { whatsappUrl, instagramUrl } from '@/lib/links'
+import { whatsappUrl, instagramUrl, bookingMailtoUrl, BOOKING_EMAIL } from '@/lib/links'
 
 describe('whatsappUrl', () => {
   const originalEnv = process.env
@@ -27,5 +27,28 @@ describe('instagramUrl', () => {
   it('returns the configured Instagram URL', () => {
     process.env.NEXT_PUBLIC_INSTAGRAM_URL = 'https://www.instagram.com/stbstudio'
     expect(instagramUrl()).toBe('https://www.instagram.com/stbstudio')
+  })
+})
+
+describe('bookingMailtoUrl', () => {
+  it('returns a mailto URL addressed to the booking email', () => {
+    const url = bookingMailtoUrl('Alex', 'alex@example.com', 'Fineline', 'inner wrist', 'Just a small flower')
+    expect(url).toMatch(new RegExp(`^mailto:${BOOKING_EMAIL}`))
+  })
+
+  it('includes an encoded subject with the client name', () => {
+    const url = bookingMailtoUrl('Alex', 'alex@example.com', 'Fineline', 'inner wrist', '')
+    expect(url).toContain('subject=')
+    expect(url).toContain('Alex')
+  })
+
+  it('includes all form fields in the encoded body', () => {
+    const url = bookingMailtoUrl('Alex', 'alex@example.com', 'Fineline', 'inner wrist', 'Small lotus')
+    const body = decodeURIComponent(url.split('body=')[1])
+    expect(body).toContain('Name: Alex')
+    expect(body).toContain('Email: alex@example.com')
+    expect(body).toContain('Style: Fineline')
+    expect(body).toContain('Placement: inner wrist')
+    expect(body).toContain('Small lotus')
   })
 })

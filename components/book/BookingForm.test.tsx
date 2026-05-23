@@ -1,19 +1,16 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import BookingForm from '@/components/book/BookingForm'
+import { BOOKING_EMAIL } from '@/lib/links'
 
-jest.mock('@/lib/links', () => ({
-  whatsappUrl: () => 'https://wa.me/test',
-}))
+// Suppress jsdom "not implemented: navigation" noise from window.location.href assignment
+beforeAll(() => {
+  jest.spyOn(console, 'error').mockImplementation(() => {})
+})
+afterAll(() => {
+  jest.restoreAllMocks()
+})
 
 describe('BookingForm', () => {
-  beforeEach(() => {
-    global.fetch = jest.fn()
-  })
-
-  afterEach(() => {
-    jest.resetAllMocks()
-  })
-
   it('renders all form fields', () => {
     render(<BookingForm />)
     expect(screen.getByPlaceholderText('Your name')).toBeInTheDocument()
@@ -28,37 +25,15 @@ describe('BookingForm', () => {
     expect(screen.getByRole('button', { name: /send request/i })).toBeInTheDocument()
   })
 
-  it('renders WhatsApp fallback link', () => {
+  it('renders direct email link', () => {
     render(<BookingForm />)
-    expect(screen.getByRole('link', { name: /whatsapp/i })).toHaveAttribute('href', 'https://wa.me/test')
+    const emailLink = screen.getByRole('link', { name: BOOKING_EMAIL })
+    expect(emailLink).toHaveAttribute('href', `mailto:${BOOKING_EMAIL}`)
   })
 
-  it('shows success message after successful submission', async () => {
-    ;(global.fetch as jest.Mock).mockResolvedValueOnce({ ok: true })
+  it('shows success message after submit', () => {
     render(<BookingForm />)
     fireEvent.submit(screen.getByRole('form', { name: /booking form/i }))
-    await waitFor(() => {
-      expect(screen.getByText(/thank you/i)).toBeInTheDocument()
-    })
-    expect(screen.queryByPlaceholderText('Your name')).not.toBeInTheDocument()
-  })
-
-  it('shows error message after failed submission', async () => {
-    ;(global.fetch as jest.Mock).mockResolvedValueOnce({ ok: false })
-    render(<BookingForm />)
-    fireEvent.submit(screen.getByRole('form', { name: /booking form/i }))
-    await waitFor(() => {
-      expect(screen.getByText(/something went wrong/i)).toBeInTheDocument()
-    })
-    expect(screen.getByPlaceholderText('Your name')).toBeInTheDocument()
-  })
-
-  it('shows error message when fetch throws', async () => {
-    ;(global.fetch as jest.Mock).mockRejectedValueOnce(new Error('Network error'))
-    render(<BookingForm />)
-    fireEvent.submit(screen.getByRole('form', { name: /booking form/i }))
-    await waitFor(() => {
-      expect(screen.getByText(/something went wrong/i)).toBeInTheDocument()
-    })
+    expect(screen.getByText(/thank you/i)).toBeInTheDocument()
   })
 })

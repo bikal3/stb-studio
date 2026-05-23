@@ -1,10 +1,17 @@
+import Image from 'next/image'
 import { artistContent } from '@/lib/content'
-import PlaceholderImage from '@/components/PlaceholderImage'
 
 export default function ArtistStrip() {
   return (
     <section className="bg-ink-light px-8 py-10 flex gap-5 items-center">
-      <PlaceholderImage className="w-20 h-20 rounded-full flex-shrink-0" />
+      <div className="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+        <Image
+          src="/images/profile-pic.jpg"
+          alt={artistContent.name}
+          fill
+          className="object-cover"
+        />
+      </div>
       <div>
         <p className="text-[11px] tracking-[3px] text-muted uppercase font-sans mb-2">
           {artistContent.label}

@@ -1,36 +1,31 @@
 'use client'
 
 import { useState } from 'react'
-import { whatsappUrl } from '@/lib/links'
+import { bookingMailtoUrl, BOOKING_EMAIL } from '@/lib/links'
 
-type Status = 'idle' | 'sending' | 'success' | 'error'
+type Status = 'idle' | 'success'
 
 export default function BookingForm() {
   const [status, setStatus] = useState<Status>('idle')
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setStatus('sending')
-    try {
-      const res = await fetch(
-        process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? '',
-        {
-          method: 'POST',
-          body: new FormData(e.currentTarget),
-          headers: { Accept: 'application/json' },
-        }
-      )
-      setStatus(res.ok ? 'success' : 'error')
-    } catch {
-      setStatus('error')
-    }
+    const data = new FormData(e.currentTarget)
+    const name = data.get('name') as string
+    const email = data.get('email') as string
+    const style = data.get('style') as string
+    const placement = data.get('placement') as string
+    const message = (data.get('message') as string) ?? ''
+
+    window.location.href = bookingMailtoUrl(name, email, style, placement, message)
+    setStatus('success')
   }
 
   if (status === 'success') {
     return (
       <div className="text-center py-8">
         <p className="font-serif italic text-xl text-ink mb-2">Thank you.</p>
-        <p className="text-sm font-sans text-muted">Susmita will be in touch within 24–48 hours.</p>
+        <p className="text-sm font-sans text-muted">Your email client should have opened. Susmita will be in touch within 24–48 hours.</p>
       </div>
     )
   }
@@ -84,34 +79,17 @@ export default function BookingForm() {
       />
       <button
         type="submit"
-        disabled={status === 'sending'}
-        className="bg-ink text-warm-white text-[10px] tracking-[2px] uppercase font-sans px-4 py-3 hover:bg-ink-light transition-colors disabled:opacity-50"
+        className="bg-ink text-warm-white text-[10px] tracking-[2px] uppercase font-sans px-4 py-3 hover:bg-ink-light transition-colors"
       >
-        {status === 'sending' ? 'Sending...' : 'Send Request'}
+        Send Request
       </button>
-      {status === 'error' && (
-        <p className="text-sm font-sans text-red-600">
-          Something went wrong. Please try again or{' '}
-          <a
-            href={whatsappUrl("I'd like to book a tattoo consult at STB Studio")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline"
-          >
-            message on WhatsApp
-          </a>
-          .
-        </p>
-      )}
       <p className="text-[11px] font-sans text-muted mt-2">
-        Prefer to message directly?{' '}
+        Or email directly:{' '}
         <a
-          href={whatsappUrl("I'd like to book a tattoo consult at STB Studio")}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={`mailto:${BOOKING_EMAIL}`}
           className="underline hover:text-ink transition-colors"
         >
-          WhatsApp <span aria-hidden="true">→</span>
+          {BOOKING_EMAIL}
         </a>
       </p>
     </form>
