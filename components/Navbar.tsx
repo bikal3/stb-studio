@@ -1,18 +1,13 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 bg-warm-white border-b border-warm-grey px-6 py-3 flex justify-between items-center">
-      <Link href="/" className="flex items-center">
-        <Image
-          src="/images/logo.jpeg"
-          alt="STB Studio"
-          width={56}
-          height={56}
-          className="object-contain"
-          priority
-        />
+    <nav className="sticky top-0 z-50 bg-warm-white border-b border-warm-grey px-6 py-4 flex justify-between items-center">
+      <Link
+        href="/"
+        className="text-[13px] tracking-[3px] uppercase text-ink font-sans font-semibold"
+      >
+        STB STUDIO
       </Link>
       <div className="flex items-center gap-6">
         <Link href="/gallery" className="text-[11px] tracking-wide text-muted font-sans hover:text-ink transition-colors">
