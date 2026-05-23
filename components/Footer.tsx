@@ -1,5 +1,7 @@
-import { whatsappUrl, instagramUrl } from '@/lib/links'
+import { whatsappUrl, instagramUrl, facebookUrl, tiktokUrl } from '@/lib/links'
 import { siteConfig } from '@/lib/content'
+
+const socialLinkClass = 'text-[10px] text-muted font-sans hover:text-warm-white transition-colors'
 
 export default function Footer() {
   return (
@@ -10,23 +12,17 @@ export default function Footer() {
         </p>
         <p className="text-[10px] text-muted font-sans mt-1">{siteConfig.location}</p>
       </div>
-      <div className="text-right flex flex-col gap-1">
-        <a
-          href={instagramUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[10px] text-muted font-sans hover:text-warm-white transition-colors"
-          aria-label="Instagram"
-        >
+      <div className="text-right flex flex-col gap-1.5">
+        <a href={instagramUrl()} target="_blank" rel="noopener noreferrer" className={socialLinkClass}>
           Instagram
         </a>
-        <a
-          href={whatsappUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[10px] text-muted font-sans hover:text-warm-white transition-colors"
-          aria-label="WhatsApp"
-        >
+        <a href={facebookUrl()} target="_blank" rel="noopener noreferrer" className={socialLinkClass}>
+          Facebook
+        </a>
+        <a href={tiktokUrl()} target="_blank" rel="noopener noreferrer" className={socialLinkClass}>
+          TikTok
+        </a>
+        <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className={socialLinkClass}>
           WhatsApp
         </a>
       </div>

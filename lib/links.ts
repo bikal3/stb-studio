@@ -11,6 +11,14 @@ export function instagramUrl(): string {
   return process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? '#'
 }
 
+export function facebookUrl(): string {
+  return process.env.NEXT_PUBLIC_FACEBOOK_URL ?? '#'
+}
+
+export function tiktokUrl(): string {
+  return process.env.NEXT_PUBLIC_TIKTOK_URL ?? '#'
+}
+
 export function bookingMailtoUrl(
   name: string,
   email: string,
