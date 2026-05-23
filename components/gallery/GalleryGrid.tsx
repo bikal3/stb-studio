@@ -18,7 +18,7 @@ export default function GalleryGrid({ images }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         {images.map((image, i) => (
           <button
-            key={i}
+            key={image.src}
             className="relative aspect-square w-full overflow-hidden bg-warm-grey focus:outline-none focus:ring-2 focus:ring-accent"
             onClick={() => setLightboxIndex(i)}
             aria-label={`View ${image.alt}`}
