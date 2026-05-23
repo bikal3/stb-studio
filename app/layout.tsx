@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Sacramento } from "next/font/google";
+import { Playfair_Display, Inter, Nothing_You_Could_Do } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,7 +16,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const sacramento = Sacramento({
+const nothingYouCouldDo = Nothing_You_Could_Do({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-great-vibes",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${sacramento.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} ${nothingYouCouldDo.variable}`}>
       <body className="bg-warm-white text-ink font-sans">
         <Navbar />
         <main>{children}</main>
