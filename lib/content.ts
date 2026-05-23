@@ -1,15 +1,14 @@
 export const siteConfig = {
   name: "STB Studio",
   location: "Kathmandu, Nepal",
-  description:
-    "A private sanctuary for art and self-expression. Every tattoo is a story. Every piece, a companion for life.",
+  description: "A sanctuary for art and self-expression. Every tattoo is a story. Every piece, a companion for life.",
 };
 
 export const heroContent = {
-  eyebrow: "Private Art & Tattoo · Kathmandu",
+  eyebrow: "Tattoo Studio · Kathmandu",
   headline: ["Ink.", "Object.", "Identity."] as string[],
   subtext:
-    "A private sanctuary for art and self-expression. Every tattoo is a story. Every piece, a companion for life.",
+    "Custom tattos designed to reflect who you are and what you stand for This is what we do. This is who we are",
   cta: "Book a Consult",
 };
 
