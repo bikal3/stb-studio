@@ -7,19 +7,24 @@ const features = [
   {
     num: '02',
     title: 'Custom Engraving',
-    description: 'Personalised engravings on phone cases, mirrors & more. By order only.',
+    description: "Your ideas, gently engraved on phone cases and mirrors. Quietly personal, made just for you — crafted only after your order.",
   },
   {
     num: '03',
     title: 'Quality & Safety',
-    description: 'Sterile equipment, premium inks and top hygiene standards on every visit.',
+    description: "Where hygiene meets creativity. We maintain a clean, comfortable environment with sterilised equipment, while our artists thoughtfully work with your ideas to create satisfying results.",
+  },
+  {
+    num: '04',
+    title: 'STB Limited Drops (Art Only)',
+    description: "Carefully detailed mandala artworks inspired by elements, energy and identity. Quietly expressive, each piece is created with meaning and intention.",
   },
 ]
 
 export default function FeaturesStrip() {
   return (
     <section className="bg-cream px-8 py-12">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-warm-grey">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-warm-grey">
         {features.map((f) => (
           <div key={f.title} className="md:px-8 first:pl-0 last:pr-0">
             <p className="text-[11px] font-sans text-accent tracking-[2px] mb-3">{f.num}</p>

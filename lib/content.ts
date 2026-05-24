@@ -116,8 +116,32 @@ export const services: ServiceCategory[] = [
     category: "STB Limited Drops",
     items: [
       {
-        name: "Ignition Series",
-        description: "Fire mandala sculptural art. 1 of 1 pieces only. No reproduction.",
+        name: "🔥 IGNITION",
+        description: "Fire / Origin · Creation • Energy • Power",
+        duration: null,
+        price: "Rs 10,000 – 45,000+",
+      },
+      {
+        name: "🌑 OBSIDIAN",
+        description: "Earth / Shadow · Silence • Strength • Depth",
+        duration: null,
+        price: "Rs 10,000 – 45,000+",
+      },
+      {
+        name: "🌊 TIDAL",
+        description: "Water / Flow · Healing • Motion • Balance",
+        duration: null,
+        price: "Rs 10,000 – 45,000+",
+      },
+      {
+        name: "🩸 RITUAL",
+        description: "Blood / Intensity · Transformation • Emotion • Release",
+        duration: null,
+        price: "Rs 10,000 – 45,000+",
+      },
+      {
+        name: "☀️ HALO",
+        description: "Light / Sacred · Clarity • Elevation • Ascension",
         duration: null,
         price: "Rs 10,000 – 45,000+",
       },
@@ -168,7 +192,7 @@ export const studioServiceContent = {
   intro:
     "Our studio is a welcoming and inclusive space where clients can feel comfortable and confident in their choice of tattoo. We prioritize cleanliness and safety, using only the highest quality equipment and following strict sterilization protocols.",
   detail:
-    "At STB Studio, our skilled tattoo artists specialize in different styles and are committed to creating high-quality, meaningful designs that you can proudly display. Whether you desire a small, delicate tattoo or a detailed back piece, we ensure that each design receives the same level of care and attention to detail.",
+    "At STB Studio, our skilled tattoo artists specialize in realism, blackwork, geometric, mandala, fineline, Japanese, micro realism and more, creating meaningful designs that you can proudly display. Whether you desire a small, delicate tattoo or a detailed back piece, we ensure that each design receives the same level of care and attention to detail.",
 };
 
 export const galleryPreviewCount = 6;
