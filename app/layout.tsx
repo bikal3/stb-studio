@@ -26,7 +26,7 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: "STB Studio — Tattoo Studio, Kathmandu",
   description:
-    "A tattoo sanctuary for art and self-expression. Custom tattoos, collectible art objects, and design experiences by Susmita Tamang Bomjan in Kathmandu, Nepal.",
+    "A tattoo sanctuary for art and self-expression. Custom tattoos, collectible art objects, and design experiences by Susmita Tamang Bhandari in Kathmandu, Nepal.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

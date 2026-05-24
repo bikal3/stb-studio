@@ -12,7 +12,7 @@ export const heroContent = {
 };
 
 export const artistContent = {
-  name: "Susmita Tamang Bomjan",
+  name: "Susmita Tamang Bhandari",
   label: "The Artist",
   pullQuote: "This is not just a place of work, but a place of belonging.",
   bio: "Susmita Tamang bomjan believes that a tattoo studio is a place where one can learn valuable life lessons, similar to a hospital. While hospitals show the harsh realities of life, tattoo studios offer a sense of acceptance. People from all walks of life visit tattoo studios - from those who are happy, to those who are grieving, excited, or nervous. Despite the initial emotions, there is a sense of satisfaction and a natural smile that emerges after getting a tattoo. Tattoos are magical. Contrary to popular belief, tattoo studios are often misunderstood as intimidating establishments, associated with unsavory characters, blaring music, and a run-down atmosphere. However, your perception will drastically change once you step into a reputable studio and immerse yourself in the unique experience it offers. Regardless of the size or meaning behind a tattoo, as long as it brings happiness and fulfills ones desires, the experience of creating art together is truly magical.",
@@ -26,7 +26,7 @@ export const artistContent = {
 
 export const philosophyQuoteContent = {
   quote: "Tattoos are magical. This is not just a place of work, but a place of belonging.",
-  attribution: "— Susmita Tamang Bomjan",
+  attribution: "— Susmita Tamang Bhandari",
 };
 
 export type ServiceItem = {

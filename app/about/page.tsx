@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About — STB Studio',
   description:
-    'Learn about Susmita Tamang Bomjan and the philosophy behind STB Studio in Kathmandu.',
+    'Learn about Susmita Tamang Bhandari and the philosophy behind STB Studio in Kathmandu.',
 }
 
 export default function AboutPage() {
@@ -17,7 +17,7 @@ export default function AboutPage() {
         <div className="relative w-32 h-32 rounded-full overflow-hidden">
           <Image
             src="/images/profile-pic.png"
-            alt="Susmita Tamang Bomjan"
+            alt="Susmita Tamang Bhandari"
             fill
             className="object-cover"
             priority

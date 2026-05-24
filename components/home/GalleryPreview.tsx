@@ -3,12 +3,12 @@ import Image from 'next/image'
 import SectionLabel from '@/components/SectionLabel'
 
 const previewImages = [
-  { src: '/images/colour-tattoo/IMG_8806.JPG', alt: 'Colour tattoo by Susmita Tamang Bomjan' },
-  { src: '/images/fine-line/IMG_8803.JPG', alt: 'Fine line tattoo by Susmita Tamang Bomjan' },
-  { src: '/images/old-school/IMG_8851.jpg', alt: 'Old school tattoo by Susmita Tamang Bomjan' },
-  { src: '/images/colour-tattoo/IMG_8828.JPG', alt: 'Colour tattoo by Susmita Tamang Bomjan' },
-  { src: '/images/fine-line/IMG_8826.JPG', alt: 'Fine line tattoo by Susmita Tamang Bomjan' },
-  { src: '/images/old-school/IMG_8854.jpg', alt: 'Old school tattoo by Susmita Tamang Bomjan' },
+  { src: '/images/colour-tattoo/IMG_8806.JPG', alt: 'Colour tattoo by Susmita Tamang Bhandari' },
+  { src: '/images/fine-line/IMG_8803.JPG', alt: 'Fine line tattoo by Susmita Tamang Bhandari' },
+  { src: '/images/old-school/IMG_8851.jpg', alt: 'Old school tattoo by Susmita Tamang Bhandari' },
+  { src: '/images/colour-tattoo/IMG_8828.JPG', alt: 'Colour tattoo by Susmita Tamang Bhandari' },
+  { src: '/images/fine-line/IMG_8826.JPG', alt: 'Fine line tattoo by Susmita Tamang Bhandari' },
+  { src: '/images/old-school/IMG_8854.jpg', alt: 'Old school tattoo by Susmita Tamang Bhandari' },
 ]
 
 export default function GalleryPreview() {

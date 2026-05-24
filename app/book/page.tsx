@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Book a Consult — STB Studio',
-  description: 'Book a tattoo consultation with Susmita Tamang Bomjan at STB Studio, Kathmandu.',
+  description: 'Book a tattoo consultation with Susmita Tamang Bhandari at STB Studio, Kathmandu.',
 }
 
 export default function BookPage() {

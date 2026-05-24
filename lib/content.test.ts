@@ -37,6 +37,6 @@ describe('aftercareInstructions', () => {
 
 describe('artistContent', () => {
   it('has the correct artist name', () => {
-    expect(artistContent.name).toBe('Susmita Tamang Bomjan')
+    expect(artistContent.name).toBe('Susmita Tamang Bhandari')
   })
 })

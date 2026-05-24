@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const artists = [
   {
     name: "Susmita",
-    fullName: "Susmita Tamang Bomjan",
+    fullName: "Susmita Tamang Bhandari",
     photo: "/images/profile-pic.png",
     specialty: "Fine Line · Floral · Micro Realism",
     bio: "Founder and lead artist of STB Studio. Susmita has been crafting custom tattoos in Kathmandu for years. Her work reflects a belief that every tattoo is a story — personal, permanent, and powerful.",
