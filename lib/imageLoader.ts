@@ -1,4 +1,4 @@
-export default function imageLoader({ src }: { src: string }): string {
+export default function imageLoader({ src, width }: { src: string; width: number }): string {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
-  return `${base}${src}`
+  return `${base}${src}?w=${width}`
 }

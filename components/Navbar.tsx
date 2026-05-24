@@ -10,6 +10,7 @@ export default function Navbar() {
             src="/images/logo-main.png"
             alt="STB Studio"
             fill
+            sizes="40px"
             className="object-cover"
             priority
           />

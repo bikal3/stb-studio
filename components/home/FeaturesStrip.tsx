@@ -17,7 +17,7 @@ const features = [
   {
     num: '04',
     title: 'STB Limited Drops (Art Only)',
-    description: "Carefully detailed mandala artworks inspired by elements, energy and identity. Quietly expressive, each piece is created with meaning and intention.",
+    description: "Carefully detailed mandala artworks inspired by elements, energy and identity. Quietly expressive, each piece is created with meaning and intention. Strictly 1 of 1 — comes with title + authenticity note.",
   },
 ]
 
