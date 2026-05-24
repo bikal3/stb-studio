@@ -7,8 +7,7 @@ export const siteConfig = {
 export const heroContent = {
   eyebrow: "Tattoo Studio · Kathmandu",
   headline: ["Ink.", "Object.", "Identity."] as string[],
-  subtext:
-    "Custom tattos designed to reflect who you are and what you stand for This is what we do. This is who we are",
+  subtext: "A home for self-expression, meaningful art and lasting stories.",
   cta: "Book a Consult",
 };
 
@@ -89,7 +88,7 @@ export const services: ServiceCategory[] = [
       },
       {
         name: "Object Drop Series",
-        description: "Limited edition sculptural artworks. Strictly 1 of 1. Comes with title + authenticity note.",
+        description: "Limited edition sculptural artworks (pinecone mandala / experimental pieces)",
         duration: null,
         price: "Rs 10,000 – 45,000+",
       },

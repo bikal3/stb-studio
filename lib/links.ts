@@ -1,4 +1,4 @@
-export const BOOKING_EMAIL = 'susmitatamangbomjanstb@gmail.com'
+export const BOOKING_EMAIL = 'stbstudio.np@gmail.com'
 
 export function whatsappUrl(message?: string): string {
   const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''

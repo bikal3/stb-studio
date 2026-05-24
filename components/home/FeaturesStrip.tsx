@@ -2,7 +2,7 @@ const features = [
   {
     num: '01',
     title: 'Tattoos',
-    description: 'Custom designs in fine line, floral, colour, blackwork & more — crafted for you.',
+    description: "Every tattoo tells a story. Whether it's your vision, your memory, or your favourite design, our artists bring it to life with creativity, precision, and care. Any style, any design — customized the way you want it.",
   },
   {
     num: '02',
