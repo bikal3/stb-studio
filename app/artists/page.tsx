@@ -59,7 +59,7 @@ export default function ArtistsPage() {
         <h1 className="font-serif italic font-light text-ink text-4xl">Artists</h1>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-4 gap-y-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-10">
         {artists.map((artist, i) => (
           <div key={artist.name} className="flex flex-col">
             <div className="relative w-full aspect-square mb-4 overflow-hidden bg-warm-grey">
@@ -67,7 +67,7 @@ export default function ArtistsPage() {
                 src={artist.photo}
                 alt={artist.fullName}
                 fill
-                sizes="(max-width: 1152px) 50vw, 576px"
+                sizes="(max-width: 768px) 50vw, (max-width: 1152px) 33vw, 384px"
                 className="object-cover object-top"
               />
             </div>
