@@ -29,6 +29,9 @@ CLAUDE.md
 # production
 /build
 
+# generated image variants (rebuilt by scripts/optimize-images.mjs)
+/public/_opt/
+
 # misc
 .DS_Store
 *.pem
