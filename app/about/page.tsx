@@ -19,6 +19,7 @@ export default function AboutPage() {
             src="/images/profile-pic.png"
             alt="Susmita Tamang Bhandari"
             fill
+            sizes="128px"
             className="object-cover"
             priority
           />

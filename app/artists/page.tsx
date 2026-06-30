@@ -63,7 +63,13 @@ export default function ArtistsPage() {
         {artists.map((artist, i) => (
           <div key={artist.name} className="flex flex-col">
             <div className="relative w-full aspect-square mb-4 overflow-hidden bg-warm-grey">
-              <Image src={artist.photo} alt={artist.fullName} fill className="object-cover object-top" />
+              <Image
+                src={artist.photo}
+                alt={artist.fullName}
+                fill
+                sizes="50vw"
+                className="object-cover object-top"
+              />
             </div>
             <h2 className="font-serif text-ink text-xl mb-1">{artist.name}</h2>
             <p className="text-[10px] tracking-[2px] uppercase font-sans text-accent mb-2">{artist.specialty}</p>

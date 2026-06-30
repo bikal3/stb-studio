@@ -23,7 +23,7 @@ export default function GalleryPreview() {
               src={image.src}
               alt={image.alt}
               fill
-              sizes="(max-width: 768px) 33vw, 25vw"
+              sizes="33vw"
               className="object-cover"
             />
           </div>
