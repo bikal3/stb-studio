@@ -67,7 +67,7 @@ const galleryImages = [
 
 export default function GalleryPage() {
   return (
-    <div className="px-6 py-12">
+    <div className="max-w-6xl mx-auto px-6 py-12">
       <div className="mb-8">
         <SectionLabel className="mb-2">Portfolio</SectionLabel>
         <h1 className="font-serif italic font-light text-4xl text-ink">Gallery</h1>

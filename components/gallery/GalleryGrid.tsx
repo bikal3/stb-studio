@@ -39,7 +39,7 @@ export default function GalleryGrid({ images }: Props) {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {filtered.map((image) => (
           <button
             key={image.src}
@@ -51,7 +51,7 @@ export default function GalleryGrid({ images }: Props) {
               src={image.src}
               alt=""
               fill
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+              sizes="(max-width: 768px) 50vw, (max-width: 1152px) 33vw, 384px"
               className="object-cover"
             />
           </button>

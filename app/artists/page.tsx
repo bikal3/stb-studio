@@ -53,7 +53,7 @@ const artists = [
 
 export default function ArtistsPage() {
   return (
-    <div className="min-h-screen bg-warm-white px-6 py-12">
+    <div className="min-h-screen bg-warm-white max-w-6xl mx-auto px-6 py-12">
       <div className="mb-10">
         <p className="text-[10px] tracking-[4px] uppercase font-sans text-accent mb-2">Our Team</p>
         <h1 className="font-serif italic font-light text-ink text-4xl">Artists</h1>
@@ -67,7 +67,7 @@ export default function ArtistsPage() {
                 src={artist.photo}
                 alt={artist.fullName}
                 fill
-                sizes="50vw"
+                sizes="(max-width: 1152px) 50vw, 576px"
                 className="object-cover object-top"
               />
             </div>

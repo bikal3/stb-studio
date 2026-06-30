@@ -14,6 +14,7 @@ const previewImages = [
 export default function GalleryPreview() {
   return (
     <section className="bg-warm-white px-8 py-10">
+      <div className="max-w-6xl mx-auto">
       <SectionLabel className="mb-2">Portfolio</SectionLabel>
       <h2 className="font-serif italic font-light text-2xl text-ink mb-6">Selected Works</h2>
       <div className="grid grid-cols-3 gap-1.5 mb-5">
@@ -23,7 +24,7 @@ export default function GalleryPreview() {
               src={image.src}
               alt={image.alt}
               fill
-              sizes="33vw"
+              sizes="(max-width: 1152px) 33vw, 384px"
               className="object-cover"
             />
           </div>
@@ -35,6 +36,7 @@ export default function GalleryPreview() {
       >
         View Full Gallery <span aria-hidden="true">→</span>
       </Link>
+      </div>
     </section>
   )
 }
