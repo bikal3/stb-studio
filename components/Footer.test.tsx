@@ -4,6 +4,8 @@ import Footer from '@/components/Footer'
 jest.mock('@/lib/links', () => ({
   whatsappUrl: () => 'https://wa.me/9779841234567',
   instagramUrl: () => 'https://www.instagram.com/stbstudio',
+  facebookUrl: () => 'https://www.facebook.com/stbstudio',
+  tiktokUrl: () => 'https://www.tiktok.com/@stbstudio',
 }))
 
 describe('Footer', () => {
