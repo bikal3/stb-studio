@@ -30,6 +30,9 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: /stb-studio
           NEXT_PUBLIC_INSTAGRAM_URL: "https://www.instagram.com/susmitatamangbomjan/"
+          NEXT_PUBLIC_FACEBOOK_URL: "https://www.facebook.com/Stbstudio.np"
+          NEXT_PUBLIC_TIKTOK_URL: "https://www.tiktok.com/@stbstudi0"
+          NEXT_PUBLIC_WHATSAPP_NUMBER: "9779841234567"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
