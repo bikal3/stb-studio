@@ -14,8 +14,10 @@ export default function ServicesPage() {
   return (
     <div>
       <section className="bg-cream px-8 py-12">
-        <SectionLabel className="mb-2">Pricing</SectionLabel>
-        <h1 className="font-serif italic font-light text-4xl text-ink">Services</h1>
+        <div className="max-w-3xl mx-auto">
+          <SectionLabel className="mb-2">Pricing</SectionLabel>
+          <h1 className="font-serif italic font-light text-4xl text-ink">Services</h1>
+        </div>
       </section>
 
       {services.map((category, i) => (
@@ -27,18 +29,20 @@ export default function ServicesPage() {
       ))}
 
       <section className="bg-ink-light px-8 py-12 text-center">
-        <p className="font-serif italic text-warm-white text-xl mb-4">Ready to begin?</p>
-        <p className="text-sm text-muted font-sans mb-6">
-          Book a free design consultation to discuss your ideas.
-        </p>
-        <a
-          href={whatsappUrl("I'd like to book a design consultation at STB Studio")}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border border-warm-white text-warm-white text-[10px] tracking-[3px] uppercase font-sans px-6 py-3 hover:bg-warm-white hover:text-ink transition-colors"
-        >
-          {bookingCtaLabel}
-        </a>
+        <div className="max-w-3xl mx-auto">
+          <p className="font-serif italic text-warm-white text-xl mb-4">Ready to begin?</p>
+          <p className="text-sm text-muted font-sans mb-6">
+            Book a free design consultation to discuss your ideas.
+          </p>
+          <a
+            href={whatsappUrl("I'd like to book a design consultation at STB Studio")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block border border-warm-white text-warm-white text-[10px] tracking-[3px] uppercase font-sans px-6 py-3 hover:bg-warm-white hover:text-ink transition-colors"
+          >
+            {bookingCtaLabel}
+          </a>
+        </div>
       </section>
     </div>
   )
