@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import { whatsappUrl, instagramUrl, facebookUrl, tiktokUrl } from '@/lib/links'
 import { siteConfig } from '@/lib/content'
 
@@ -43,28 +45,52 @@ const socials = [
 ]
 
 export default function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="bg-ink px-6 py-7">
-      <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
-        <div>
-          <p className="text-[12px] tracking-[3px] text-warm-white uppercase font-sans">
-            {siteConfig.name}
-          </p>
-          <p className="text-[10px] text-muted font-sans mt-1">{siteConfig.location}</p>
+    <footer className="bg-ink px-6 py-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
+          <Link
+            href="/"
+            className="flex items-center gap-3 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-warm-grey/40 flex-shrink-0">
+              <Image
+                src="/images/logo-main.png"
+                alt="STB Studio"
+                fill
+                sizes="40px"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-[12px] tracking-[3px] text-warm-white uppercase font-sans">
+                {siteConfig.name}
+              </p>
+              <p className="text-[10px] text-muted font-sans mt-1">{siteConfig.location}</p>
+            </div>
+          </Link>
+          <div className="flex items-center gap-5">
+            {socials.map(({ label, href, icon }) => (
+              <a
+                key={label}
+                href={href()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="text-warm-white hover:text-accent transition-colors p-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                {icon}
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="flex items-center gap-5">
-          {socials.map(({ label, href, icon }) => (
-            <a
-              key={label}
-              href={href()}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="text-warm-white hover:text-accent transition-colors p-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              {icon}
-            </a>
-          ))}
+
+        <div className="mt-6 pt-5 border-t border-warm-white/10 text-center">
+          <p className="text-[10px] text-muted font-sans tracking-wide">
+            © {year} {siteConfig.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
