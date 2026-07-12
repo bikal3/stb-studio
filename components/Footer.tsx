@@ -60,7 +60,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-warm-white hover:text-accent transition-colors p-2"
+              className="text-warm-white hover:text-accent transition-colors p-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               {icon}
             </a>

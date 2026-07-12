@@ -38,7 +38,7 @@ export default function ServicesPage() {
             href={whatsappUrl("I'd like to book a design consultation at STB Studio")}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block border border-warm-white text-warm-white text-[10px] tracking-[3px] uppercase font-sans px-6 py-3 hover:bg-warm-white hover:text-ink transition-colors"
+            className="inline-block border border-warm-white text-warm-white text-[10px] tracking-[3px] uppercase font-sans px-6 py-3 hover:bg-warm-white hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             {bookingCtaLabel}
           </a>

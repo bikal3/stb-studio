@@ -39,7 +39,7 @@ export default function BookingForm() {
     )
   }
 
-  const inputClass = 'border border-warm-grey px-3 py-2 text-sm font-sans text-ink bg-white focus:outline-none focus:border-accent w-full'
+  const inputClass = 'border border-warm-grey px-3 py-2.5 text-sm font-sans text-ink bg-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent w-full'
 
   return (
     <form
@@ -110,7 +110,7 @@ export default function BookingForm() {
       />
       <button
         type="submit"
-        className="bg-ink text-warm-white text-[10px] tracking-[2px] uppercase font-sans px-4 py-3 hover:bg-ink-light transition-colors"
+        className="bg-ink text-warm-white text-[10px] tracking-[2px] uppercase font-sans px-4 py-3 hover:bg-ink-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
       >
         Send Request
       </button>

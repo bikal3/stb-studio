@@ -41,7 +41,7 @@ export default function Hero() {
           href={whatsappUrl("I'd like to book a tattoo consult at STB Studio")}
           target="_blank"
           rel="noopener noreferrer"
-          className="border border-warm-white text-warm-white text-[10px] tracking-[3px] uppercase font-sans px-6 py-3 hover:bg-warm-white hover:text-ink transition-colors"
+          className="border border-warm-white text-warm-white text-[10px] tracking-[3px] uppercase font-sans px-6 py-3 hover:bg-warm-white hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
           {heroContent.cta}
         </a>

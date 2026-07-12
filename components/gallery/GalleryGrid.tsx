@@ -27,7 +27,7 @@ export default function GalleryGrid({ images }: Props) {
           <button
             key={type}
             onClick={() => { setActiveFilter(type); setLightboxIndex(null) }}
-            className={`text-[10px] tracking-[2px] uppercase font-sans px-4 py-2 border transition-colors ${
+            className={`text-[10px] tracking-[2px] uppercase font-sans px-4 py-2 border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
               activeFilter === type
                 ? 'bg-ink text-warm-white border-ink'
                 : 'bg-transparent text-muted border-warm-grey hover:text-ink hover:border-ink'
@@ -43,7 +43,7 @@ export default function GalleryGrid({ images }: Props) {
         {filtered.map((image) => (
           <button
             key={image.src}
-            className="relative aspect-square w-full overflow-hidden bg-warm-grey focus:outline-none focus:ring-2 focus:ring-accent"
+            className="relative aspect-square w-full overflow-hidden bg-warm-grey focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset"
             onClick={() => setLightboxIndex(filtered.indexOf(image))}
             aria-label={`View ${image.alt}`}
           >
