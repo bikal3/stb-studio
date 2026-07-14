@@ -3,19 +3,21 @@
 import { heroContent } from '@/lib/content'
 import { whatsappUrl } from '@/lib/links'
 
-const VIDEO_URL = 'https://www.pexels.com/download/video/4124305/'
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center overflow-hidden">
-      {/* video background */}
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center overflow-hidden bg-ink">
+      {/* video background (self-hosted, compressed) */}
       <video
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
+        aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
-        src={VIDEO_URL}
+        src={`${BASE_PATH}/videos/hero.mp4`}
       />
 
       {/* dark overlay */}
