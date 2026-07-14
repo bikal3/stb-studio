@@ -29,7 +29,7 @@ export default function FeaturesStrip() {
           <div key={f.title} className="md:px-8 first:pl-0 last:pr-0">
             <p className="text-[11px] font-sans text-accent tracking-[2px] mb-3">{f.num}</p>
             <h3 className="font-serif italic font-light text-ink text-xl mb-3">{f.title}</h3>
-            <p className="text-[11px] font-sans text-muted leading-relaxed">{f.description}</p>
+            <p className="text-[13px] font-sans text-muted leading-relaxed">{f.description}</p>
           </div>
         ))}
       </div>

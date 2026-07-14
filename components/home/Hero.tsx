@@ -7,7 +7,7 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center overflow-hidden bg-ink">
+    <section className="relative min-h-[70vh] flex flex-col items-center justify-center text-center overflow-hidden bg-ink">
       {/* video background (self-hosted, compressed) */}
       <video
         autoPlay
@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-ink/70" />
 
       {/* content */}
-      <div className="relative z-10 px-8 py-20 flex flex-col items-center">
+      <div className="relative z-10 px-8 py-16 flex flex-col items-center">
         <p className="text-[11px] tracking-[4px] text-accent uppercase font-sans mb-4">
           {heroContent.eyebrow}
         </p>

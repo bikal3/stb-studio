@@ -17,7 +17,7 @@ export default function ServiceCard({ service }: Props) {
           </p>
         )}
       </div>
-      <p className="text-[11px] text-muted font-sans mt-1 leading-relaxed">
+      <p className="text-[13px] text-muted font-sans mt-1 leading-relaxed">
         {service.description}
       </p>
       {service.duration && (

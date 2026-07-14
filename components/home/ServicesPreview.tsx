@@ -14,7 +14,7 @@ export default function ServicesPreview() {
               {service.name}
             </p>
             {service.duration && (
-              <p className="text-[11px] text-muted font-sans mt-1">{service.duration}</p>
+              <p className="text-[12px] text-muted font-sans mt-1">{service.duration}</p>
             )}
           </div>
         ))}

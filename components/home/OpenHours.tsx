@@ -29,8 +29,8 @@ export default function OpenHours() {
               i < hours.length - 1 ? 'border-b border-warm-grey/15' : ''
             }`}
           >
-            <span className="text-[12px] font-sans text-muted tracking-wide">{day}</span>
-            <span className="text-[12px] font-sans text-warm-white tracking-wide">{time}</span>
+            <span className="text-[13px] font-sans text-muted tracking-wide">{day}</span>
+            <span className="text-[13px] font-sans text-warm-white tracking-wide">{time}</span>
           </div>
         ))}
       </div>
