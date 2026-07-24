@@ -36,6 +36,20 @@ STB Studio specialises in fine line, floral, colour, blackwork, micro realism, a
 
 ---
 
+## Design System
+
+All design decisions live as tokens in `app/globals.css` (`@theme`) rather than being scattered across components:
+
+- **Colour** — warm neutrals (`warm-white`, `cream`, `cream-dark`) against `ink`, with a bronze accent. The accent ships in two values: `accent` for dark surfaces and `accent-ink` for light ones. Likewise `muted` (body copy on light) and `mist` (body copy on dark). Every text/background pair clears WCAG AA.
+- **Type** — a fluid `clamp()` scale (`text-display` → `text-eyebrow`) so headings resize with the viewport instead of stepping at breakpoints.
+- **Rhythm** — `components/ui/Section.tsx` and `Container.tsx` own all vertical padding and content widths, so sections can't drift apart.
+- **Motion** — `components/ui/Reveal.tsx` fades content in on scroll. Every animation is disabled under `prefers-reduced-motion`, and revealed content falls back to visible when scripting is off.
+- **Focus** — one global `:focus-visible` outline driven by a `--focus-ring` variable that dark sections (`.surface-ink`) override, so the ring always contrasts with its backdrop.
+
+Shared primitives live in `components/ui/`: `Section`, `Container`, `PageHeader`, `SectionHeading`, `Button` (`buttonClasses`), `ArrowLink`, and `Reveal`.
+
+---
+
 ## Images
 
 Because the site is a fully static export (no image server), images are optimised at build time:
