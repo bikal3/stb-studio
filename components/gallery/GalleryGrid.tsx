@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Lightbox from '@/components/gallery/Lightbox'
+import { aspectRatioOf } from '@/lib/imageDimensions'
 
 export type GalleryImage = { src: string; alt: string; type: string }
 
@@ -25,45 +26,46 @@ export default function GalleryGrid({ images }: Props) {
 
   return (
     <>
-      {/* Filter tabs. Counts are aria-hidden so each tab's accessible name
-          stays the plain style name. */}
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by style">
-        {types.map((type) => {
-          const active = activeFilter === type
-          return (
-            <button
-              key={type}
-              type="button"
-              aria-pressed={active}
-              onClick={() => {
-                setActiveFilter(type)
-                setLightboxIndex(null)
-              }}
-              className={`inline-flex items-center gap-2 border px-4 py-2.5 text-eyebrow uppercase font-sans font-medium transition-colors duration-300 ${
-                active
-                  ? 'border-ink bg-ink text-warm-white'
-                  : 'border-warm-grey bg-transparent text-muted hover:border-ink hover:text-ink'
-              }`}
-            >
-              {type}
-              <span
-                aria-hidden="true"
-                className={active ? 'text-warm-white/60' : 'text-muted/60'}
+      {/* Filters stay reachable while scrolling a long portfolio. Counts are
+          aria-hidden so each tab's accessible name stays the plain style name. */}
+      <div className="sticky top-header z-30 -mx-6 border-b border-warm-grey bg-warm-white/90 px-6 py-4 backdrop-blur-md sm:-mx-8 sm:px-8">
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by style">
+          {types.map((type) => {
+            const active = activeFilter === type
+            return (
+              <button
+                key={type}
+                type="button"
+                aria-pressed={active}
+                onClick={() => {
+                  setActiveFilter(type)
+                  setLightboxIndex(null)
+                }}
+                className={`inline-flex items-center gap-2 border px-4 py-2.5 text-eyebrow uppercase font-sans font-medium transition-colors duration-300 ${
+                  active
+                    ? 'border-ink bg-ink text-warm-white'
+                    : 'border-warm-grey bg-transparent text-muted hover:border-ink hover:text-ink'
+                }`}
               >
-                {countFor(type)}
-              </span>
-            </button>
-          )
-        })}
+                {type}
+                <span aria-hidden="true" className={active ? 'text-warm-white/60' : 'text-muted/60'}>
+                  {countFor(type)}
+                </span>
+              </button>
+            )
+          })}
+        </div>
       </div>
 
-      {/* Grid */}
-      <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4">
+      {/* Masonry. Every photo is portrait-to-square, so reserving each one's
+          real aspect ratio shows the whole piece instead of cropping it. */}
+      <div className="mt-8 columns-2 gap-2 sm:columns-3 sm:gap-3 lg:columns-4">
         {filtered.map((image, i) => (
           <button
             key={image.src}
             type="button"
-            className="group relative aspect-square w-full overflow-hidden bg-warm-grey"
+            style={{ aspectRatio: aspectRatioOf(image.src) }}
+            className="group relative mb-2 block w-full break-inside-avoid overflow-hidden bg-warm-grey sm:mb-3"
             onClick={() => setLightboxIndex(i)}
             aria-label={`View ${image.alt}`}
           >
