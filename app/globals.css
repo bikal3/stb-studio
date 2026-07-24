@@ -50,6 +50,11 @@
   --text-display--line-height: 0.94;
   --text-display--letter-spacing: -0.025em;
 
+  /* ---- Layout -------------------------------------------------------- */
+  /* Height of the fixed navbar. Anything that sticks below it, or scrolls
+     to an anchor, offsets by this. */
+  --spacing-header: 4.25rem;
+
   /* ---- Motion -------------------------------------------------------- */
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -94,7 +99,7 @@
   html {
     scroll-behavior: smooth;
     /* Keeps anchored sections clear of the fixed header. */
-    scroll-padding-top: 6rem;
+    scroll-padding-top: calc(var(--spacing-header) + 2rem);
     -webkit-text-size-adjust: 100%;
   }
 
