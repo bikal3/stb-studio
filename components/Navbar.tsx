@@ -1,34 +1,78 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { buttonClasses } from '@/components/ui/Button'
 
 const NAV_LINKS = [
-  { href: '/', label: 'Home' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/artists', label: 'Artists' },
-  { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
+  { href: '/aftercare', label: 'Aftercare' },
+  { href: '/about', label: 'About' },
 ]
 
-const linkClass =
-  'text-[11px] tracking-wide text-muted font-sans hover:text-ink transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-warm-white'
-
-const bookClass =
-  'bg-ink text-warm-white text-[10px] tracking-[2px] uppercase font-sans px-4 py-2 hover:bg-ink-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-warm-white'
-
-function Wordmark() {
+function Wordmark({ inverted }: { inverted: boolean }) {
   return (
-    <span className="text-[13px] tracking-[3px] uppercase text-ink font-sans font-semibold">
+    <span
+      className={`text-[0.8125rem] tracking-[0.22em] uppercase font-sans font-semibold transition-colors duration-300 ${
+        inverted ? 'text-warm-white' : 'text-ink'
+      }`}
+    >
       STB STUDIO
     </span>
   )
 }
 
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      {open ? (
+        <>
+          <line x1="5" y1="5" x2="19" y2="19" />
+          <line x1="19" y1="5" x2="5" y2="19" />
+        </>
+      ) : (
+        <>
+          <line x1="3" y1="7" x2="21" y2="7" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="17" x2="21" y2="17" />
+        </>
+      )}
+    </svg>
+  )
+}
+
 export default function Navbar() {
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
-  const close = () => setOpen(false)
+  const [scrolled, setScrolled] = useState(false)
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+
+  const close = useCallback(() => setOpen(false), [])
+
+  // The home page opens with a full-bleed video, so the bar floats over it
+  // until the first scroll. Every other page needs the solid bar immediately.
+  const overlayMode = pathname === '/' && !scrolled && !open
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   // Lock background scroll while the overlay is open.
   useEffect(() => {
@@ -38,102 +82,166 @@ export default function Navbar() {
     }
   }, [open])
 
-  // Close the overlay on Escape.
+  // Close on Escape, and keep Tab inside the overlay while it is open.
   useEffect(() => {
     if (!open) return
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') close()
+      if (e.key === 'Escape') {
+        close()
+        triggerRef.current?.focus()
+        return
+      }
+      if (e.key !== 'Tab') return
+
+      const focusable = overlayRef.current?.querySelectorAll<HTMLElement>('a[href], button')
+      if (!focusable?.length) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
+
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [open])
+  }, [open, close])
+
+  const isActive = (href: string) => pathname === href
 
   return (
-    <nav className="sticky top-0 z-50 bg-warm-white border-b border-warm-grey px-6 py-3 flex justify-between items-center">
-      <Link href="/" onClick={close} className="flex items-center gap-3 min-w-0">
-        <div className="relative w-10 h-10 rounded-full overflow-hidden border border-warm-grey flex-shrink-0">
-          <Image
-            src="/images/logo-main.png"
-            alt="STB Studio"
-            fill
-            sizes="40px"
-            className="object-cover"
-            priority
-          />
-        </div>
-        <Wordmark />
-      </Link>
-
-      {/* Desktop links */}
-      <div className="hidden md:flex items-center gap-6">
-        {NAV_LINKS.map((l) => (
-          <Link key={l.href} href={l.href} className={linkClass}>
-            {l.label}
-          </Link>
-        ))}
-        <Link href="/book" className={bookClass}>
-          Book
-        </Link>
-      </div>
-
-      {/* Mobile menu button */}
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        aria-label="Open menu"
-        aria-expanded={open}
-        className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
+        overlayMode
+          ? 'bg-transparent border-b border-transparent'
+          : 'bg-warm-white/90 backdrop-blur-md border-b border-warm-grey'
+      }`}
+      style={overlayMode ? ({ '--focus-ring': 'var(--color-accent)' } as React.CSSProperties) : undefined}
+    >
+      <nav
+        aria-label="Main"
+        className="mx-auto flex max-w-[88rem] items-center justify-between px-6 py-3.5 sm:px-8"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-          <line x1="3" y1="7" x2="21" y2="7" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="17" x2="21" y2="17" />
-        </svg>
-      </button>
+        <Link href="/" onClick={close} className="flex min-w-0 items-center gap-3">
+          <span
+            className={`relative block h-10 w-10 flex-shrink-0 overflow-hidden rounded-full border transition-colors duration-300 ${
+              overlayMode ? 'border-warm-white/35' : 'border-warm-grey'
+            }`}
+          >
+            <Image
+              src="/images/logo-main.png"
+              alt="STB Studio"
+              fill
+              sizes="40px"
+              className="object-cover"
+              priority
+            />
+          </span>
+          <Wordmark inverted={overlayMode} />
+        </Link>
+
+        {/* Desktop links */}
+        <div className="hidden items-center gap-1 md:flex">
+          {NAV_LINKS.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              aria-current={isActive(l.href) ? 'page' : undefined}
+              className={`relative px-3 py-2 text-[0.75rem] font-sans tracking-wide transition-colors duration-300
+                after:absolute after:inset-x-3 after:bottom-1 after:h-px after:origin-left after:scale-x-0
+                after:bg-current after:transition-transform after:duration-300 after:ease-soft
+                hover:after:scale-x-100 aria-[current=page]:after:scale-x-100 ${
+                  overlayMode
+                    ? 'text-warm-white/80 hover:text-warm-white aria-[current=page]:text-warm-white'
+                    : 'text-muted hover:text-ink aria-[current=page]:text-ink'
+                }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            href="/book"
+            aria-current={isActive('/book') ? 'page' : undefined}
+            className={`${buttonClasses({
+              variant: overlayMode ? 'outline-light' : 'solid',
+              size: 'sm',
+            })} ml-3`}
+          >
+            Book
+          </Link>
+        </div>
+
+        {/* Mobile menu button */}
+        <button
+          ref={triggerRef}
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Open menu"
+          aria-expanded={open}
+          className={`flex h-11 w-11 -mr-2 items-center justify-center transition-colors duration-300 md:hidden ${
+            overlayMode ? 'text-warm-white' : 'text-ink'
+          }`}
+        >
+          <MenuIcon open={false} />
+        </button>
+      </nav>
 
       {/* Mobile full-screen overlay */}
       {open && (
         <div
-          className="fixed inset-0 z-50 bg-warm-white flex flex-col md:hidden"
+          ref={overlayRef}
+          className="surface-ink fixed inset-0 z-50 flex animate-fade flex-col md:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
         >
-          <div className="flex justify-between items-center px-6 py-3 border-b border-warm-grey">
-            <Wordmark />
+          <div className="flex items-center justify-between border-b border-ink-soft px-6 py-3.5">
+            <Wordmark inverted />
             <button
               type="button"
-              onClick={close}
+              onClick={() => {
+                close()
+                triggerRef.current?.focus()
+              }}
               aria-label="Close menu"
-              className="flex items-center justify-center w-11 h-11 -mr-2 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="-mr-2 flex h-11 w-11 items-center justify-center text-warm-white"
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-                <line x1="5" y1="5" x2="19" y2="19" />
-                <line x1="19" y1="5" x2="5" y2="19" />
-              </svg>
+              <MenuIcon open />
             </button>
           </div>
-          <div className="flex-1 flex flex-col items-center justify-center gap-8">
-            {NAV_LINKS.map((l) => (
+
+          <div className="flex flex-1 flex-col justify-center gap-1 px-8">
+            {NAV_LINKS.map((l, i) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={close}
-                className="font-serif italic text-3xl text-ink hover:text-accent transition-colors"
+                aria-current={isActive(l.href) ? 'page' : undefined}
+                style={{ animationDelay: `${60 + i * 45}ms` }}
+                className="flex animate-rise items-baseline gap-4 border-b border-ink-soft py-4 font-serif text-3xl font-light text-warm-white transition-colors hover:text-accent aria-[current=page]:text-accent"
               >
+                <span className="font-sans text-eyebrow text-mist" aria-hidden="true">
+                  0{i + 1}
+                </span>
                 {l.label}
               </Link>
             ))}
             <Link
               href="/book"
               onClick={close}
-              className="mt-4 bg-ink text-warm-white text-xs tracking-[2px] uppercase font-sans px-8 py-4 hover:bg-ink-light transition-colors"
+              style={{ animationDelay: '330ms' }}
+              className={`${buttonClasses({ variant: 'solid-light', size: 'lg' })} mt-8 animate-rise w-full`}
             >
               Book a Consult
             </Link>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   )
 }
