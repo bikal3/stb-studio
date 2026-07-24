@@ -1,49 +1,59 @@
-import SectionLabel from '@/components/SectionLabel'
+import PageHeader from '@/components/ui/PageHeader'
+import Section from '@/components/ui/Section'
+import Container from '@/components/ui/Container'
+import Reveal from '@/components/ui/Reveal'
 import ServiceCategorySection from '@/components/services/ServiceCategorySection'
+import { buttonClasses, ButtonArrow } from '@/components/ui/Button'
 import { services, bookingCtaLabel } from '@/lib/content'
 import { whatsappUrl } from '@/lib/links'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Services — STB Studio',
+  title: 'Services',
   description:
     'Full pricing menu for tattoo sessions, STB Objects, and custom experiences at STB Studio, Kathmandu.',
 }
 
 export default function ServicesPage() {
   return (
-    <div>
-      <section className="bg-cream px-8 py-12">
-        <div className="max-w-3xl mx-auto">
-          <SectionLabel className="mb-2">Pricing</SectionLabel>
-          <h1 className="font-serif italic font-light text-4xl text-ink">Services</h1>
-        </div>
-      </section>
+    <>
+      <PageHeader
+        eyebrow="Pricing"
+        title="Services"
+        lead="Session rates are a guide — final pricing depends on size, placement and detail. Every custom piece starts with a consultation."
+      />
 
       {services.map((category, i) => (
         <ServiceCategorySection
           key={category.category}
           category={category}
+          index={i}
           dark={i % 2 !== 0}
         />
       ))}
 
-      <section className="bg-ink-light px-8 py-12 text-center">
-        <div className="max-w-3xl mx-auto">
-          <p className="font-serif italic text-warm-white text-xl mb-4">Ready to begin?</p>
-          <p className="text-sm text-muted font-sans mb-6">
-            Book a free design consultation to discuss your ideas.
-          </p>
-          <a
-            href={whatsappUrl("I'd like to book a design consultation at STB Studio")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block border border-warm-white text-warm-white text-[10px] tracking-[3px] uppercase font-sans px-6 py-3 hover:bg-warm-white hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            {bookingCtaLabel}
-          </a>
-        </div>
-      </section>
-    </div>
+      <Section surface="ink">
+        <Container width="narrow">
+          <Reveal className="flex flex-col items-center text-center">
+            <h2 className="font-serif text-h2 font-light italic text-warm-white text-balance">
+              Ready to begin?
+            </h2>
+            <p className="mt-5 max-w-md text-lead font-sans text-mist">
+              Book a design consultation to talk through your idea. The fee is waived if you go
+              ahead with the tattoo or object.
+            </p>
+            <a
+              href={whatsappUrl("I'd like to book a design consultation at STB Studio")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${buttonClasses({ variant: 'solid-light', size: 'lg' })} mt-9`}
+            >
+              {bookingCtaLabel}
+              <ButtonArrow />
+            </a>
+          </Reveal>
+        </Container>
+      </Section>
+    </>
   )
 }
