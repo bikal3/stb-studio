@@ -1,10 +1,13 @@
 import GalleryGrid from '@/components/gallery/GalleryGrid'
-import SectionLabel from '@/components/SectionLabel'
+import PageHeader from '@/components/ui/PageHeader'
+import Section from '@/components/ui/Section'
+import Container from '@/components/ui/Container'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Gallery — STB Studio',
-  description: 'Browse the full portfolio of tattoo work by Susmita Tamang Bhandari at STB Studio, Kathmandu.',
+  title: 'Gallery',
+  description:
+    'Browse the full portfolio of tattoo work by Susmita Tamang Bhandari at STB Studio, Kathmandu.',
 }
 
 const galleryImages = [
@@ -67,12 +70,17 @@ const galleryImages = [
 
 export default function GalleryPage() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
-      <div className="mb-8">
-        <SectionLabel className="mb-2">Portfolio</SectionLabel>
-        <h1 className="font-serif italic font-light text-4xl text-ink">Gallery</h1>
-      </div>
-      <GalleryGrid images={galleryImages} />
-    </div>
+    <>
+      <PageHeader
+        eyebrow="Portfolio"
+        title="Gallery"
+        lead={`${galleryImages.length} pieces across fine line, colour, blackwork, floral, micro realism and old school. Tap any piece to view it full size.`}
+      />
+      <Section surface="white" size="sm">
+        <Container>
+          <GalleryGrid images={galleryImages} />
+        </Container>
+      </Section>
+    </>
   )
 }
