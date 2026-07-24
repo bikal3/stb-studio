@@ -1,67 +1,90 @@
-import SectionLabel from '@/components/SectionLabel'
-import { aftercareInstructions, touchUpPolicy, noRefundPolicy, aftercareIntro, aftercareSignOff } from '@/lib/content'
 import type { Metadata } from 'next'
+import PageHeader from '@/components/ui/PageHeader'
+import Section from '@/components/ui/Section'
+import Container from '@/components/ui/Container'
+import SectionHeading from '@/components/ui/SectionHeading'
+import Reveal from '@/components/ui/Reveal'
+import {
+  aftercareInstructions,
+  touchUpPolicy,
+  noRefundPolicy,
+  aftercareIntro,
+  aftercareSignOff,
+} from '@/lib/content'
 
 export const metadata: Metadata = {
-  title: 'Aftercare — STB Studio',
+  title: 'Aftercare',
   description:
     'Tattoo aftercare instructions, touch-up policy, and refund policy for STB Studio clients.',
 }
 
 export default function AftercarePage() {
   return (
-    <div>
-      <section className="bg-cream px-8 py-12">
-        <div className="max-w-2xl mx-auto">
-          <SectionLabel className="mb-2">Care</SectionLabel>
-          <h1 className="font-serif italic font-light text-4xl text-ink">Aftercare</h1>
-          <p className="text-sm text-muted font-sans mt-3 max-w-sm leading-relaxed">
-            {aftercareIntro}
-          </p>
-        </div>
-      </section>
+    <>
+      <PageHeader eyebrow="Care" title="Aftercare" lead={aftercareIntro} />
 
-      <section className="px-8 py-12">
-        <div className="max-w-2xl mx-auto">
-          <SectionLabel className="mb-4">Instructions</SectionLabel>
-          <ol className="flex flex-col gap-4">
+      <Section surface="white">
+        <Container width="narrow">
+          <Reveal>
+            <SectionHeading eyebrow="Instructions" title="Healing your new ink" />
+          </Reveal>
+
+          <ol className="mt-10 flex flex-col">
             {aftercareInstructions.map((instruction, i) => (
-              <li key={i} className="flex gap-4">
-                <span className="text-[11px] text-accent font-sans font-semibold mt-0.5 flex-shrink-0">
+              <Reveal
+                as="li"
+                key={instruction}
+                delay={i * 60}
+                className="flex gap-6 border-t border-warm-grey py-6 last:border-b"
+              >
+                <span className="shrink-0 pt-0.5 font-serif text-h3 font-light text-accent-ink tabular-nums">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <p className="text-sm font-sans text-ink leading-relaxed">{instruction}</p>
-              </li>
+                <p className="font-sans text-body text-ink/85">{instruction}</p>
+              </Reveal>
             ))}
           </ol>
-          <p className="mt-8 text-sm font-sans text-ink font-medium tracking-wide">
-            {aftercareSignOff}
-          </p>
-        </div>
-      </section>
 
-      <section className="bg-cream-dark px-8 py-12">
-        <div className="max-w-2xl mx-auto">
-          <SectionLabel className="mb-4">Touch-Up Policy</SectionLabel>
-          <ul className="flex flex-col gap-3">
+          <Reveal className="mt-10 border-l-2 border-accent-ink bg-cream px-6 py-5">
+            <p className="text-eyebrow uppercase font-sans font-medium text-accent-ink">
+              {aftercareSignOff}
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      <Section surface="cream-dark">
+        <Container width="narrow">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Touch-Up Policy"
+              title="What's covered, and when"
+              lead="One complimentary touch-up within three months, subject to the conditions below."
+            />
+          </Reveal>
+
+          <ul className="mt-10 flex flex-col gap-4">
             {touchUpPolicy.map((point, i) => (
-              <li key={i} className="flex gap-3 items-start">
-                <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0 mt-2" />
-                <p className="text-sm font-sans text-ink leading-relaxed">{point}</p>
-              </li>
+              <Reveal as="li" key={point} delay={i * 60} className="flex items-start gap-4">
+                <span
+                  aria-hidden="true"
+                  className="mt-3 h-1.5 w-1.5 shrink-0 rotate-45 bg-accent-ink"
+                />
+                <p className="font-sans text-body text-ink/85">{point}</p>
+              </Reveal>
             ))}
           </ul>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="bg-ink px-8 py-10">
-        <div className="max-w-2xl mx-auto">
-          <SectionLabel className="mb-3">Refund Policy</SectionLabel>
-          <p className="text-sm font-sans text-warm-grey leading-relaxed max-w-xl">
-            {noRefundPolicy}
-          </p>
-        </div>
-      </section>
-    </div>
+      <Section surface="ink" size="sm">
+        <Container width="narrow">
+          <Reveal>
+            <SectionHeading tone="dark" eyebrow="Refund Policy" title="All sales are final" />
+            <p className="mt-6 max-w-2xl font-sans text-body text-mist">{noRefundPolicy}</p>
+          </Reveal>
+        </Container>
+      </Section>
+    </>
   )
 }
