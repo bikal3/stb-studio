@@ -2,6 +2,21 @@ export const siteConfig = {
   name: "STB Studio",
   location: "Kathmandu, Nepal",
   description: "A sanctuary for art and self-expression. Every tattoo is a story. Every piece, a companion for life.",
+  url: "https://bikal3.github.io/stb-studio",
+};
+
+export const openingHours = {
+  days: [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ] as const,
+  opens: "11:00 am",
+  closes: "7:00 pm",
 };
 
 export const heroContent = {
@@ -15,6 +30,10 @@ export const artistContent = {
   name: "Susmita Tamang Bhandari",
   label: "The Artist",
   pullQuote: "This is not just a place of work, but a place of belonging.",
+  disciplines: ["Fine Line", "Mandala", "Micro Realism", "Floral", "Blackwork"],
+  // Condensed from `bio` below, for the home page introduction.
+  studioIntro:
+    "A tattoo studio, Susmita believes, is a place where people arrive happy, grieving, excited or nervous — and leave with the same quiet smile. STB Studio was built to be that room.",
   bio: "Susmita Tamang Bhandari believes that a tattoo studio is a place where one can learn valuable life lessons, similar to a hospital. While hospitals show the harsh realities of life, tattoo studios offer a sense of acceptance. People from all walks of life visit tattoo studios - from those who are happy, to those who are grieving, excited, or nervous. Despite the initial emotions, there is a sense of satisfaction and a natural smile that emerges after getting a tattoo. Tattoos are magical. Contrary to popular belief, tattoo studios are often misunderstood as intimidating establishments, associated with unsavory characters, blaring music, and a run-down atmosphere. However, your perception will drastically change once you step into a reputable studio and immerse yourself in the unique experience it offers. Regardless of the size or meaning behind a tattoo, as long as it brings happiness and fulfills ones desires, the experience of creating art together is truly magical.",
   philosophy:
     "STB Studio is designed with a color scheme of black, white, and grey. Black symbolizes risk, white represents opportunities, and grey embodies magic. This signifies that one should not rush into opportunities or give up when faced with risks. Instead, take your time, embrace the process, and let the magic unfold.",
