@@ -1,13 +1,33 @@
 import type { ReactNode } from 'react'
 
+const TONES = {
+  /** On light surfaces. Falls back to the AA-safe bronze. */
+  light: 'text-accent-ink',
+  /** On dark surfaces. */
+  dark: 'text-accent',
+  /** Quieter variant when the label sits next to a coloured heading. */
+  muted: 'text-muted',
+} as const
+
 type Props = {
   children: ReactNode
+  tone?: keyof typeof TONES
+  /** Draws a short rule before the label. */
+  rule?: boolean
   className?: string
 }
 
-export default function SectionLabel({ children, className = '' }: Props) {
+export default function SectionLabel({
+  children,
+  tone = 'light',
+  rule = false,
+  className = '',
+}: Props) {
   return (
-    <p className={`text-[11px] tracking-[4px] text-muted uppercase font-sans ${className}`}>
+    <p
+      className={`flex items-center gap-3 text-eyebrow uppercase font-sans font-medium ${TONES[tone]} ${className}`}
+    >
+      {rule && <span aria-hidden="true" className="h-px w-8 bg-current opacity-50" />}
       {children}
     </p>
   )
