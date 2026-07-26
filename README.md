@@ -8,7 +8,11 @@ Portfolio and booking website for **STB Studio** — a custom tattoo studio in K
 
 ## About
 
-STB Studio specialises in fine line, floral, colour, blackwork, micro realism, and custom engraving. This site serves as the studio's online portfolio, artist showcase, and booking entry point.
+STB Studio is a tattoo sanctuary in Kathmandu built around a single idea: every tattoo is a story, and every piece a companion for life. Alongside custom tattoos — fine line, floral, colour, blackwork, and micro realism — the studio makes collectible art objects and one-of-a-kind limited drops.
+
+This site is the studio's home on the web. It carries the full portfolio, introduces the artists, lays out the service menu and pricing, and gives visitors a direct path to book a consultation. It is designed to feel like the studio itself: calm, considered, and unmistakably its own — warm neutrals against ink black, generous typography, and imagery given room to breathe.
+
+The whole site is a static export, so it loads fast, costs nothing to host, and stays online without a server to maintain.
 
 ---
 
@@ -32,7 +36,6 @@ STB Studio specialises in fine line, floral, colour, blackwork, micro realism, a
 - [React 19](https://react.dev)
 - [Tailwind CSS v4](https://tailwindcss.com) — CSS-first config
 - [TypeScript](https://www.typescriptlang.org)
-- Deployed on **GitHub Pages** via GitHub Actions
 
 ---
 
@@ -52,31 +55,11 @@ Shared primitives live in `components/ui/`: `Section`, `Container`, `PageHeader`
 
 ## Images
 
-Because the site is a fully static export (no image server), images are optimised at build time:
+Because the site is a fully static export (no image server), images are optimised ahead of time:
 
-- A `sharp`-based generator (`scripts/optimize-images.mjs`) pre-creates resized **WebP** variants (384 / 640 / 1080 / 1600 w) from the source photos in `public/images`, writing them to `public/_opt`.
+- A `sharp`-based generator (`scripts/optimize-images.mjs`) pre-creates resized **WebP** variants (384 / 640 / 1080 / 1600 w) from the source photos in `public/images`, writing them to `public/_opt`. On the same pass it records each photo's intrinsic dimensions to `lib/imageDimensions.ts`.
 - A custom Next.js image loader (`lib/imageLoader.ts`) serves the smallest variant that fits each layout, so visitors download appropriately sized images rather than full-resolution originals.
-
-Content width is constrained and centred on larger screens so the portfolio reads cleanly across phone, tablet, and desktop.
-
----
-
-## Configuration
-
-The site reads the following public environment variables (e.g. from `.env.local` locally or repository settings in CI):
-
-```env
-NEXT_PUBLIC_WHATSAPP_NUMBER=977XXXXXXXXXX
-NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/your_handle/
-NEXT_PUBLIC_FACEBOOK_URL=https://www.facebook.com/your_page
-NEXT_PUBLIC_TIKTOK_URL=https://www.tiktok.com/@your_handle
-```
-
----
-
-## Deployment
-
-The site is exported as static HTML and deployed to GitHub Pages automatically on every push to `main`. The GitHub Actions workflow (`.github/workflows/deploy.yml`) handles the build and deploy steps. The repository's **Pages source** is set to **GitHub Actions** under Settings → Pages.
+- The gallery uses those recorded dimensions to lay photos out as masonry on their true aspect ratios, so each piece is shown whole rather than cropped to a square.
 
 ---
 
@@ -89,6 +72,7 @@ components/   # UI components
   gallery/    # Gallery grid + lightbox
   book/       # Booking form
   services/   # Service cards
+  ui/         # Shared design-system primitives
 lib/          # Content, links, custom image loader
 scripts/      # Build-time WebP image generator
 public/       # Static assets and source images
