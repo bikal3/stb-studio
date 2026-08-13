@@ -7,40 +7,63 @@ import { whatsappUrl } from '@/lib/links'
 import { buttonClasses, ButtonArrow } from '@/components/ui/Button'
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+const HERO_VIDEO = `${BASE_PATH}/videos/hero.mp4`
+
+/**
+ * Whether it is reasonable to pull a ~5MB decorative video. Skips it for
+ * reduced-motion, Data Saver, and slow/metered connections, so the hero is a
+ * fast static backdrop for everyone who shouldn't pay for the video.
+ */
+function shouldLoadVideo(): boolean {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
+
+  // navigator.connection is not in the TS lib and is absent in some browsers.
+  const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } })
+    .connection
+  if (conn?.saveData) return false
+  if (conn?.effectiveType && /(^|-)2g$|3g/.test(conn.effectiveType)) return false
+
+  return true
+}
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [src, setSrc] = useState<string | undefined>(undefined)
   const [ready, setReady] = useState(false)
 
-  // Hold the video on its first frame for anyone who has asked for less
-  // motion, and fade it in so there is no hard cut from the backdrop.
+  // The video is decorative and heavy, so it is kept out of the initial HTML.
+  // Once the page is interactive we decide whether to load it at all, then let
+  // it fade in over the gradient backdrop (which is what the copy sits on, so
+  // the LCP never waits on the download).
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      video.pause()
-      video.removeAttribute('loop')
+    if (!shouldLoadVideo()) return
+    const attach = () => setSrc(HERO_VIDEO)
+    if (typeof window.requestIdleCallback === 'function') {
+      const id = window.requestIdleCallback(attach, { timeout: 2000 })
+      return () => window.cancelIdleCallback(id)
     }
-    if (video.readyState >= 2) setReady(true)
+    const id = window.setTimeout(attach, 200)
+    return () => window.clearTimeout(id)
   }, [])
 
   return (
     <section className="surface-ink relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-6 py-32 text-center">
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        onCanPlay={() => setReady(true)}
-        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-soft ${
-          ready ? 'opacity-100' : 'opacity-0'
-        }`}
-        src={`${BASE_PATH}/videos/hero.mp4`}
-      />
+      {src && (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
+          onCanPlay={() => setReady(true)}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-soft ${
+            ready ? 'opacity-100' : 'opacity-0'
+          }`}
+          src={src}
+        />
+      )}
 
       {/* Two scrims: a vertical gradient that keeps the navbar and the copy
           legible, and a vignette that pulls focus to the centre. */}
