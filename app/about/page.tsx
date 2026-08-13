@@ -49,7 +49,7 @@ export default function AboutPage() {
                   fill
                   sizes="(max-width: 1024px) 100vw, 22rem"
                   className="object-contain object-bottom p-6"
-                  priority
+                  loading="lazy"
                 />
               </div>
               <p className="mt-5 text-eyebrow uppercase font-sans text-muted">

@@ -20,7 +20,7 @@ export default function ArtistStrip() {
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
           className="object-contain object-bottom p-8 lg:p-12"
-          priority
+          loading="lazy"
         />
       </div>
 
