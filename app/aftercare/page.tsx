@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: 'Aftercare',
   description:
     'Tattoo aftercare instructions, touch-up policy, and refund policy for STB Studio clients.',
+  alternates: { canonical: '/aftercare' },
 }
 
 export default function AftercarePage() {

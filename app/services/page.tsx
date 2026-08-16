@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: 'Services',
   description:
     'Full pricing menu for tattoo sessions, STB Objects, and custom experiences at STB Studio, Kathmandu.',
+  alternates: { canonical: '/services' },
 }
 
 export default function ServicesPage() {

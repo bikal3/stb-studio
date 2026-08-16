@@ -3,8 +3,14 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { siteConfig, openingHours } from "@/lib/content";
-import { instagramUrl, facebookUrl, tiktokUrl, BOOKING_EMAIL } from "@/lib/links";
+import { siteConfig, openingHours, ARTIST_NAME } from "@/lib/content";
+import {
+  instagramUrl,
+  facebookUrl,
+  tiktokUrl,
+  BOOKING_EMAIL,
+  STUDIO_PHONE,
+} from "@/lib/links";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -19,9 +25,13 @@ const inter = Inter({
 });
 
 const TITLE = "STB Studio — Tattoo Studio, Kathmandu";
-const DESCRIPTION =
-  "A tattoo sanctuary for art and self-expression. Custom tattoos, collectible art objects, and design experiences by Susmita Tamang Bhandari in Kathmandu, Nepal.";
+const DESCRIPTION = `A tattoo sanctuary for art and self-expression. Custom tattoos, collectible art objects, and design experiences by ${ARTIST_NAME} in Kathmandu, Nepal.`;
 
+// og:image / twitter:image come from app/opengraph-image.png, which Next links
+// here automatically along with its dimensions and alt text. It is a committed
+// asset rather than a generated `opengraph-image.tsx` route on purpose: a
+// generated route exports an extensionless file, which GitHub Pages serves as
+// application/octet-stream and social scrapers then refuse.
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -29,11 +39,13 @@ export const metadata: Metadata = {
     template: "%s — STB Studio",
   },
   description: DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
     title: TITLE,
     description: DESCRIPTION,
+    url: siteConfig.url,
     locale: "en_GB",
   },
   twitter: {
@@ -58,12 +70,18 @@ const jsonLd = {
   description: DESCRIPTION,
   url: siteConfig.url,
   email: BOOKING_EMAIL,
+  telephone: STUDIO_PHONE,
+  image: `${siteConfig.url}/opengraph-image.png`,
+  logo: `${siteConfig.url}/icon.png`,
+  priceRange: "Rs 1,500 – Rs 60,000+",
+  currenciesAccepted: "NPR",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Kathmandu",
     addressCountry: "NP",
   },
-  founder: { "@type": "Person", name: "Susmita Tamang Bhandari" },
+  areaServed: { "@type": "City", name: "Kathmandu" },
+  founder: { "@type": "Person", name: ARTIST_NAME },
   sameAs: [instagramUrl(), facebookUrl(), tiktokUrl()].filter((url) => url !== "#"),
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
@@ -75,7 +93,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en-GB" className={`${playfair.variable} ${inter.variable}`}>
       <body className="bg-warm-white text-ink font-sans text-body antialiased">
         <a
           href="#content"
