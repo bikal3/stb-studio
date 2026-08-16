@@ -27,11 +27,17 @@ const inter = Inter({
 const TITLE = "STB Studio — Tattoo Studio, Kathmandu";
 const DESCRIPTION = `A tattoo sanctuary for art and self-expression. Custom tattoos, collectible art objects, and design experiences by ${ARTIST_NAME} in Kathmandu, Nepal.`;
 
-// og:image / twitter:image come from app/opengraph-image.png, which Next links
-// here automatically along with its dimensions and alt text. It is a committed
-// asset rather than a generated `opengraph-image.tsx` route on purpose: a
-// generated route exports an extensionless file, which GitHub Pages serves as
-// application/octet-stream and social scrapers then refuse.
+// The share card is declared here by absolute URL rather than through the
+// `app/opengraph-image.*` file convention. That convention resolves image URLs
+// as metadataBase + basePath + filename, and since siteConfig.url already ends
+// in the basePath, it emitted a doubled `/stb-studio/stb-studio/...` that 404s
+// on the deployed site. An absolute URL is never rewritten.
+const OG_IMAGE = {
+  url: `${siteConfig.url}/opengraph-image.png`,
+  width: 1200,
+  height: 630,
+  alt: `${siteConfig.name} — tattoo studio in ${siteConfig.location}`,
+};
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -47,11 +53,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: siteConfig.url,
     locale: "en_GB",
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
+    images: [OG_IMAGE],
   },
 };
 

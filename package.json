@@ -8,7 +8,7 @@
     "dev": "next dev",
     "prebuild": "node scripts/optimize-images.mjs",
     "build": "next build",
-    "postbuild": "node scripts/prune-export.mjs",
+    "postbuild": "node scripts/prune-export.mjs && node scripts/verify-export.mjs",
     "start": "next start",
     "lint": "eslint",
     "test": "jest",
