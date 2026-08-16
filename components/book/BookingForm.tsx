@@ -1,16 +1,16 @@
 'use client'
 
 import { useState } from 'react'
-import { bookingMailtoUrl, BOOKING_EMAIL } from '@/lib/links'
+import { bookingMailtoUrl, whatsappUrl, BOOKING_EMAIL } from '@/lib/links'
 import { buttonClasses, ButtonArrow } from '@/components/ui/Button'
 
-type Status = 'idle' | 'success'
+type Status = 'idle' | 'handed-off'
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 const fieldClass =
   'w-full border border-warm-grey bg-warm-white px-4 py-3 font-sans text-[0.9375rem] text-ink ' +
-  'placeholder:text-muted/70 transition-colors duration-200 focus:border-accent-ink focus:outline-none'
+  'placeholder:text-muted transition-colors duration-200 focus:border-accent-ink focus:outline-none'
 
 const labelClass = 'block text-eyebrow uppercase font-sans font-medium text-muted'
 
@@ -36,17 +36,46 @@ export default function BookingForm() {
     const message = (data.get('message') as string) ?? ''
 
     window.location.href = bookingMailtoUrl(name, email, style, placement, days, message)
-    setStatus('success')
+    setStatus('handed-off')
   }
 
-  if (status === 'success') {
+  // The form has no server behind it — it hands the request to the visitor's
+  // own mail app. That can silently fail (no mail client configured, common on
+  // mobile), so this step says what actually happened and offers a way through
+  // rather than claiming the request was sent.
+  if (status === 'handed-off') {
     return (
-      <div className="flex flex-col items-center py-10 text-center">
+      <div className="flex flex-col items-center py-10 text-center" role="status">
         <span aria-hidden="true" className="mb-6 h-px w-10 bg-accent-ink" />
-        <p className="font-serif text-h2 font-light italic text-ink">Thank you.</p>
+        <p className="font-serif text-h2 font-light italic text-ink">One last step.</p>
         <p className="mt-4 max-w-sm font-sans text-body text-muted">
-          Your email client should have opened. Susmita will be in touch within 24–48 hours.
+          Your email app should have opened with the request filled in. It is not sent until you
+          press send there — then Susmita will reply within 24–48 hours.
         </p>
+        <p className="mt-6 max-w-sm font-sans text-[0.9375rem] text-muted">
+          Nothing opened? Reach the studio directly:
+        </p>
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={whatsappUrl("I'd like to book a tattoo consult at STB Studio")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonClasses()}
+          >
+            WhatsApp
+            <ButtonArrow />
+          </a>
+          <a href={`mailto:${BOOKING_EMAIL}`} className={buttonClasses({ variant: 'outline' })}>
+            {BOOKING_EMAIL}
+          </a>
+        </div>
+        <button
+          type="button"
+          onClick={() => setStatus('idle')}
+          className="mt-7 font-sans text-[0.8125rem] text-muted underline decoration-warm-grey underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+        >
+          Back to the form
+        </button>
       </div>
     )
   }
@@ -191,6 +220,13 @@ export default function BookingForm() {
           {BOOKING_EMAIL}
         </a>
         .
+      </p>
+
+      {/* Worth stating plainly: this form posts nowhere. Submitting composes a
+          message in the visitor's own mail app, so no third party ever sees it. */}
+      <p className="font-sans text-[0.8125rem] leading-relaxed text-muted">
+        Your details are never sent to a server — pressing send opens this request in your own email
+        app, addressed to the studio. STB Studio uses them only to reply about your tattoo.
       </p>
     </form>
   )

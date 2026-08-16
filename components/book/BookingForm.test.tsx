@@ -43,13 +43,40 @@ describe('BookingForm', () => {
     render(<BookingForm />)
     fireEvent.submit(screen.getByRole('form', { name: /booking form/i }))
     expect(screen.getByText(/select at least one preferred day/i)).toBeInTheDocument()
-    expect(screen.queryByText(/thank you/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/one last step/i)).not.toBeInTheDocument()
   })
 
-  it('shows success message after submit when a day is selected', () => {
+  it('hands off to the mail app after submit when a day is selected', () => {
     render(<BookingForm />)
     fireEvent.click(screen.getByRole('checkbox', { name: 'Friday' }))
     fireEvent.submit(screen.getByRole('form', { name: /booking form/i }))
-    expect(screen.getByText(/thank you/i)).toBeInTheDocument()
+    expect(screen.getByText(/one last step/i)).toBeInTheDocument()
+  })
+
+  it('does not claim the request was sent, since mailto can silently fail', () => {
+    render(<BookingForm />)
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Friday' }))
+    fireEvent.submit(screen.getByRole('form', { name: /booking form/i }))
+    expect(screen.getByText(/not sent until you/i)).toBeInTheDocument()
+    expect(screen.queryByText(/thank you/i)).not.toBeInTheDocument()
+  })
+
+  it('offers direct contact fallbacks after handoff', () => {
+    render(<BookingForm />)
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Friday' }))
+    fireEvent.submit(screen.getByRole('form', { name: /booking form/i }))
+    expect(screen.getByRole('link', { name: /whatsapp/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: BOOKING_EMAIL })).toHaveAttribute(
+      'href',
+      `mailto:${BOOKING_EMAIL}`
+    )
+  })
+
+  it('can return to the form after handoff', () => {
+    render(<BookingForm />)
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Friday' }))
+    fireEvent.submit(screen.getByRole('form', { name: /booking form/i }))
+    fireEvent.click(screen.getByRole('button', { name: /back to the form/i }))
+    expect(screen.getByRole('form', { name: /booking form/i })).toBeInTheDocument()
   })
 })
