@@ -56,8 +56,8 @@ export default function ArtistStrip() {
               Meet the Artist
               <ButtonArrow />
             </Link>
-            <Link href="/artists" className={buttonClasses({ variant: 'outline-light' })}>
-              The Full Team
+            <Link href="/gallery" className={buttonClasses({ variant: 'outline-light' })}>
+              View the Work
             </Link>
           </div>
         </Reveal>
