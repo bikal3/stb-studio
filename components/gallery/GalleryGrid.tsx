@@ -13,6 +13,13 @@ type Props = {
 
 const ALL = 'All'
 
+/**
+ * Photos in the first masonry row are the LCP candidate, so they load eagerly
+ * rather than waiting on the lazy-load trigger. Four covers the widest column
+ * count (`lg:columns-4`).
+ */
+const EAGER_COUNT = 4
+
 export default function GalleryGrid({ images }: Props) {
   const types = [ALL, ...Array.from(new Set(images.map((img) => img.type)))]
   const [activeFilter, setActiveFilter] = useState(ALL)
@@ -71,9 +78,11 @@ export default function GalleryGrid({ images }: Props) {
           >
             <Image
               src={image.src}
-              alt=""
+              alt={image.alt}
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              loading={i < EAGER_COUNT ? 'eager' : 'lazy'}
+              fetchPriority={i < EAGER_COUNT ? 'high' : undefined}
               className="object-cover transition-transform duration-700 ease-soft group-hover:scale-[1.06]"
             />
             <span

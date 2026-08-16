@@ -134,13 +134,15 @@ export default function Navbar() {
               overlayMode ? 'border-warm-white/35' : 'border-warm-grey'
             }`}
           >
+            {/* Eager, not preloaded: at 40px it is never the LCP, so it should
+                not compete in the <head> with the real hero content. */}
             <Image
               src="/images/logo-main.png"
               alt="STB Studio"
               fill
               sizes="40px"
               className="object-cover"
-              priority
+              loading="eager"
             />
           </span>
           <Wordmark inverted={overlayMode} />

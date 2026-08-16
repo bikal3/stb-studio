@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, within } from '@testing-library/react'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 
 const images = [
@@ -56,6 +56,21 @@ describe('GalleryGrid', () => {
   it('opens lightbox showing the clicked image', () => {
     render(<GalleryGrid images={images} />)
     fireEvent.click(screen.getByLabelText('View Tattoo 2'))
-    expect(screen.getByAltText('Tattoo 2')).toBeInTheDocument()
+    // The grid tile carries the same alt text, so scope to the viewer itself.
+    const dialog = screen.getByRole('dialog')
+    expect(within(dialog).getByAltText('Tattoo 2')).toBeInTheDocument()
+  })
+
+  it('gives every tile descriptive alt text so the work is indexable', () => {
+    render(<GalleryGrid images={images} />)
+    for (const image of images) {
+      expect(screen.getByAltText(image.alt)).toBeInTheDocument()
+    }
+  })
+
+  it('loads the first tiles eagerly so the LCP does not wait on lazy-loading', () => {
+    const { container } = render(<GalleryGrid images={images} />)
+    const tiles = container.querySelectorAll('img')
+    expect(tiles[0]).toHaveAttribute('loading', 'eager')
   })
 })
