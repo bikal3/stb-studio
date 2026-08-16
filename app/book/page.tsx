@@ -5,12 +5,13 @@ import Container from '@/components/ui/Container'
 import SectionLabel from '@/components/SectionLabel'
 import Reveal from '@/components/ui/Reveal'
 import { buttonClasses, ButtonArrow } from '@/components/ui/Button'
-import { whatsappUrl } from '@/lib/links'
-import { openingHours } from '@/lib/content'
+import { whatsappUrl, STUDIO_PHONE, STUDIO_PHONE_DISPLAY } from '@/lib/links'
+import { openingHours, ARTIST_NAME } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Book a Consult',
-  description: 'Book a tattoo consultation with Susmita Tamang Bhandari at STB Studio, Kathmandu.',
+  description: `Book a tattoo consultation with ${ARTIST_NAME} at STB Studio, Kathmandu.`,
+  alternates: { canonical: '/book' },
 }
 
 const steps = [
@@ -73,15 +74,20 @@ export default function BookPage() {
                 In a hurry? Message the studio directly — open daily, {openingHours.opens} to{' '}
                 {openingHours.closes}.
               </p>
-              <a
-                href={whatsappUrl("I'd like to book a tattoo consult at STB Studio")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${buttonClasses({ variant: 'outline' })} mt-5`}
-              >
-                WhatsApp the studio
-                <ButtonArrow />
-              </a>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={whatsappUrl("I'd like to book a tattoo consult at STB Studio")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonClasses({ variant: 'outline' })}
+                >
+                  WhatsApp the studio
+                  <ButtonArrow />
+                </a>
+                <a href={`tel:${STUDIO_PHONE}`} className={buttonClasses({ variant: 'outline' })}>
+                  Call {STUDIO_PHONE_DISPLAY}
+                </a>
+              </div>
             </div>
           </Reveal>
 

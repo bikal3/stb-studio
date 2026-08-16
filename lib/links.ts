@@ -1,5 +1,10 @@
 export const BOOKING_EMAIL = 'stbstudio.np@gmail.com'
 
+/** E.164, for `tel:` links and structured data. */
+export const STUDIO_PHONE = '+9779841234567'
+/** Grouped the way a Nepali mobile number is normally written. */
+export const STUDIO_PHONE_DISPLAY = '+977 984-123-4567'
+
 export function whatsappUrl(message?: string): string {
   const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''
   const base = `https://wa.me/${number}`
