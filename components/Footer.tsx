@@ -1,7 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from '@/components/ui/Container'
-import { whatsappUrl, instagramUrl, facebookUrl, tiktokUrl, BOOKING_EMAIL } from '@/lib/links'
+import CurrentYear from '@/components/ui/CurrentYear'
+import {
+  whatsappUrl,
+  instagramUrl,
+  facebookUrl,
+  tiktokUrl,
+  BOOKING_EMAIL,
+  STUDIO_PHONE,
+  STUDIO_PHONE_DISPLAY,
+} from '@/lib/links'
 import { siteConfig, openingHours } from '@/lib/content'
 
 const socials = [
@@ -59,8 +68,6 @@ const quietLink =
   'font-sans text-[0.9375rem] text-mist transition-colors duration-300 hover:text-warm-white'
 
 export default function Footer() {
-  const year = new Date().getFullYear()
-
   return (
     <footer className="surface-ink border-t border-ink-soft">
       <Container className="py-[clamp(3rem,6vw,5rem)]">
@@ -135,6 +142,14 @@ export default function Footer() {
                 </dd>
               </div>
               <div>
+                <dt className="sr-only">Phone</dt>
+                <dd>
+                  <a href={`tel:${STUDIO_PHONE}`} className={quietLink}>
+                    {STUDIO_PHONE_DISPLAY}
+                  </a>
+                </dd>
+              </div>
+              <div>
                 <dt className="sr-only">Email</dt>
                 <dd>
                   <a href={`mailto:${BOOKING_EMAIL}`} className={quietLink}>
@@ -143,7 +158,7 @@ export default function Footer() {
                 </dd>
               </div>
             </dl>
-            <p className="mt-5 font-sans text-[0.8125rem] leading-relaxed text-mist/80">
+            <p className="mt-5 font-sans text-[0.8125rem] leading-relaxed text-mist">
               Walk-ins welcome. Custom work by consultation.
             </p>
           </div>
@@ -151,9 +166,9 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-ink-soft pt-7 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-sans text-[0.75rem] tracking-wide text-mist">
-            © {year} {siteConfig.name}. All rights reserved.
+            © <CurrentYear /> {siteConfig.name}. All rights reserved.
           </p>
-          <p className="font-sans text-[0.75rem] tracking-wide text-mist/70">
+          <p className="font-sans text-[0.75rem] tracking-wide text-mist">
             Artwork and photography may not be reproduced without permission.
           </p>
         </div>
