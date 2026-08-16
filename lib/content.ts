@@ -1,3 +1,10 @@
+/**
+ * The artist's name, in one place. It appears in page copy, page metadata,
+ * structured data, and every gallery alt string — change it here and it
+ * propagates everywhere.
+ */
+export const ARTIST_NAME = "Susmita Tamang Bhandari";
+
 export const siteConfig = {
   name: "STB Studio",
   location: "Kathmandu, Nepal",
@@ -27,7 +34,7 @@ export const heroContent = {
 };
 
 export const artistContent = {
-  name: "Susmita Tamang Bhandari",
+  name: ARTIST_NAME,
   label: "The Artist",
   pullQuote: "This is not just a place of work, but a place of belonging.",
   disciplines: ["Fine Line", "Mandala", "Micro Realism", "Floral", "Blackwork"],

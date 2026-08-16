@@ -5,6 +5,7 @@ import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import ArrowLink from '@/components/ui/ArrowLink'
 import Reveal from '@/components/ui/Reveal'
+import { ARTIST_NAME } from '@/lib/content'
 
 /**
  * Five images so the mosaic resolves flush on both breakpoints: the lead tile
@@ -13,28 +14,28 @@ import Reveal from '@/components/ui/Reveal'
 const previewImages = [
   {
     src: '/images/colour-tattoo/IMG_8806.JPG',
-    alt: 'Colour tattoo by Susmita Tamang Bhandari',
+    alt: `Colour tattoo by ${ARTIST_NAME}`,
     type: 'Colour',
     feature: true,
   },
   {
     src: '/images/fine-line/IMG_8803.JPG',
-    alt: 'Fine line tattoo by Susmita Tamang Bhandari',
+    alt: `Fine line tattoo by ${ARTIST_NAME}`,
     type: 'Fine Line',
   },
   {
     src: '/images/old-school/IMG_8851.jpg',
-    alt: 'Old school tattoo by Susmita Tamang Bhandari',
+    alt: `Old school tattoo by ${ARTIST_NAME}`,
     type: 'Old School',
   },
   {
     src: '/images/floral/IMG_8824.jpg',
-    alt: 'Floral tattoo by Susmita Tamang Bhandari',
+    alt: `Floral tattoo by ${ARTIST_NAME}`,
     type: 'Floral',
   },
   {
     src: '/images/black-and-grey/IMG_8862.jpg',
-    alt: 'Black and grey tattoo by Susmita Tamang Bhandari',
+    alt: `Black and grey tattoo by ${ARTIST_NAME}`,
     type: 'Black & Grey',
   },
 ]

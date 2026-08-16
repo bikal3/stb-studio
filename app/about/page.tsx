@@ -13,12 +13,13 @@ import {
   tattooHistoryContent,
   studioServiceContent,
   beYourselfContent,
+  ARTIST_NAME,
 } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'About',
-  description:
-    'Learn about Susmita Tamang Bhandari and the philosophy behind STB Studio in Kathmandu.',
+  description: `Learn about ${ARTIST_NAME} and the philosophy behind STB Studio in Kathmandu.`,
+  alternates: { canonical: '/about' },
 }
 
 const prose = 'font-sans text-body text-ink/85'
