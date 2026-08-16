@@ -32,7 +32,6 @@ export const imageDimensions: Record<string, ImageDimensions> = {
   '/images/fine-line/IMG_8835.JPG': { width: 1320, height: 1312 },
   '/images/fine-line/IMG_8841.JPG': { width: 1320, height: 1551 },
   '/images/fine-line/IMG_8848.JPG': { width: 1320, height: 1311 },
-  '/images/fine-line/IMG_8850.jpg': { width: 1320, height: 1297 },
   '/images/fine-line/IMG_8858.jpg': { width: 1320, height: 1503 },
   '/images/fine-line/IMG_8859.jpg': { width: 1320, height: 1607 },
   '/images/floral/IMG_8820.jpg': { width: 1320, height: 1364 },
