@@ -18,15 +18,15 @@ The whole site is a static export, so it loads fast, costs nothing to host, and 
 
 ## Pages
 
-| Route | Description |
-|---|---|
-| `/` | Home — hero, gallery preview, artist intro, services, open hours |
-| `/gallery` | Full portfolio organised by tattoo style, with a filterable grid and lightbox |
-| `/artists` | The artist behind the studio (linked from the footer, not the main nav — it would duplicate `/about` while STB is a single-artist studio) |
-| `/services` | Full service menu |
-| `/about` | Studio story and philosophy |
-| `/book` | Booking enquiry form |
-| `/aftercare` | Tattoo aftercare guide |
+| Route        | Description                                                                                                                               |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`          | Home — hero, gallery preview, artist intro, services, open hours                                                                          |
+| `/gallery`   | Full portfolio organised by tattoo style, with a filterable grid and lightbox                                                             |
+| `/artists`   | The artist behind the studio (linked from the footer, not the main nav — it would duplicate `/about` while STB is a single-artist studio) |
+| `/services`  | Full service menu                                                                                                                         |
+| `/about`     | Studio story and philosophy                                                                                                               |
+| `/book`      | Booking enquiry form                                                                                                                      |
+| `/aftercare` | Tattoo aftercare guide                                                                                                                    |
 
 ---
 
@@ -36,20 +36,6 @@ The whole site is a static export, so it loads fast, costs nothing to host, and 
 - [React 19](https://react.dev)
 - [Tailwind CSS v4](https://tailwindcss.com) — CSS-first config
 - [TypeScript](https://www.typescriptlang.org)
-
----
-
-## Design System
-
-All design decisions live as tokens in `app/globals.css` (`@theme`) rather than being scattered across components:
-
-- **Colour** — warm neutrals (`warm-white`, `cream`, `cream-dark`) against `ink`, with a bronze accent. The accent ships in two values: `accent` for dark surfaces and `accent-ink` for light ones. Likewise `muted` (body copy on light) and `mist` (body copy on dark). Every text/background pair clears WCAG AA.
-- **Type** — a fluid `clamp()` scale (`text-display` → `text-eyebrow`) so headings resize with the viewport instead of stepping at breakpoints.
-- **Rhythm** — `components/ui/Section.tsx` and `Container.tsx` own all vertical padding and content widths, so sections can't drift apart.
-- **Motion** — `components/ui/Reveal.tsx` fades content in on scroll. Every animation is disabled under `prefers-reduced-motion`, and revealed content falls back to visible when scripting is off.
-- **Focus** — one global `:focus-visible` outline driven by a `--focus-ring` variable that dark sections (`.surface-ink`) override, so the ring always contrasts with its backdrop.
-
-Shared primitives live in `components/ui/`: `Section`, `Container`, `PageHeader`, `SectionHeading`, `Button` (`buttonClasses`), `ArrowLink`, and `Reveal`.
 
 ---
 
@@ -66,7 +52,7 @@ Because the site is a fully static export (no image server), images are optimise
 
 ## Metadata and social previews
 
-- `public/opengraph-image.png` (1200×630) is the card that appears when the site is shared. It is declared in `app/layout.tsx` by **absolute URL**, and deliberately does *not* use the `app/opengraph-image.*` file convention. Two separate reasons:
+- `public/opengraph-image.png` (1200×630) is the card that appears when the site is shared. It is declared in `app/layout.tsx` by **absolute URL**, and deliberately does _not_ use the `app/opengraph-image.*` file convention. Two separate reasons:
   - A generated `opengraph-image.tsx` route exports an **extensionless** file, which GitHub Pages serves as `application/octet-stream` — social scrapers reject that.
   - The file convention resolves URLs as `metadataBase + basePath + filename`. Since `siteConfig.url` already ends in the basePath, that emitted a doubled `/stb-studio/stb-studio/…` which 404s. An absolute URL is never rewritten.
 - To restyle the card, replace the PNG at the same size.
