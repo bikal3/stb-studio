@@ -4,7 +4,7 @@ import Container from '@/components/ui/Container'
 import Reveal from '@/components/ui/Reveal'
 import ServiceCategorySection from '@/components/services/ServiceCategorySection'
 import { buttonClasses, ButtonArrow } from '@/components/ui/Button'
-import { services, bookingCtaLabel } from '@/lib/content'
+import { services } from '@/lib/content'
 import { whatsappUrl } from '@/lib/links'
 import type { Metadata } from 'next'
 
@@ -49,7 +49,7 @@ export default function ServicesPage() {
               rel="noopener noreferrer"
               className={`${buttonClasses({ variant: 'solid-light', size: 'lg' })} mt-9`}
             >
-              {bookingCtaLabel}
+              Book a Consult
               <ButtonArrow />
             </a>
           </Reveal>

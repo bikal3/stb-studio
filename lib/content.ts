@@ -221,8 +221,6 @@ export const studioServiceContent = {
     "At STB Studio, our skilled tattoo artists specialize in realism, blackwork, geometric, mandala, fineline, Japanese, micro realism and more, creating meaningful designs that you can proudly display. Whether you desire a small, delicate tattoo or a detailed back piece, we ensure that each design receives the same level of care and attention to detail.",
 };
 
-export const galleryPreviewCount = 6;
-
 export const beYourselfContent = {
   heading: "Be Unapologetically You",
   body: "Life is too short to be concerned with the opinions of others. It's perfectly fine to express yourself. It's perfectly fine to have one tattoo, and it's also perfectly fine to have a hundred. Just be yourself. STB Studio supports you in being yourself.",
@@ -232,5 +230,3 @@ export const aftercareIntro =
   "It's important to care for your tattoo, no matter its size. Follow these guidelines to keep your ink looking its best.";
 
 export const aftercareSignOff = "ENJOY YOUR NEW INK, FROM THE STB STUDIO TEAM.";
-
-export const bookingCtaLabel = "Book a Consult";
