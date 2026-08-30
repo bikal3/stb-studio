@@ -18,15 +18,6 @@ const EXPORT_DIR = path.join(ROOT, 'out')
 const ORIGINALS = path.join(EXPORT_DIR, 'images')
 const VARIANTS = path.join(EXPORT_DIR, '_opt/images')
 
-async function dirSize(dir) {
-  const { execSync } = await import('node:child_process')
-  try {
-    return execSync(`du -sh ${JSON.stringify(dir)}`).toString().split('\t')[0]
-  } catch {
-    return 'unknown size'
-  }
-}
-
 async function exists(target) {
   try {
     await stat(target)
@@ -55,9 +46,8 @@ async function run() {
     return
   }
 
-  const size = await dirSize(ORIGINALS)
   await rm(ORIGINALS, { recursive: true, force: true })
-  console.log(`[prune-export] removed unreferenced originals from out/images (${size})`)
+  console.log('[prune-export] removed unreferenced originals from out/images')
 }
 
 run().catch((err) => {
