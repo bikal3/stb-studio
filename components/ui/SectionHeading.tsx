@@ -7,42 +7,26 @@ type Props = {
   lead?: ReactNode
   /** Dark surfaces flip the label and lead colours. */
   tone?: 'light' | 'dark'
-  align?: 'left' | 'center'
-  as?: 'h1' | 'h2'
-  className?: string
-  id?: string
 }
 
-export default function SectionHeading({
-  eyebrow,
-  title,
-  lead,
-  tone = 'light',
-  align = 'left',
-  as: Tag = 'h2',
-  className = '',
-  id,
-}: Props) {
-  const centered = align === 'center'
-
+export default function SectionHeading({ eyebrow, title, lead, tone = 'light' }: Props) {
   return (
-    <div className={`${centered ? 'flex flex-col items-center text-center' : ''} ${className}`}>
+    <div>
       {eyebrow && (
-        <SectionLabel tone={tone === 'dark' ? 'dark' : 'light'} rule={!centered} className="mb-5">
+        <SectionLabel tone={tone} rule className="mb-5">
           {eyebrow}
         </SectionLabel>
       )}
-      <Tag
-        id={id}
-        className={`font-serif font-light text-balance ${Tag === 'h1' ? 'text-h1' : 'text-h2'} ${
+      <h2
+        className={`font-serif font-light text-h2 text-balance ${
           tone === 'dark' ? 'text-warm-white' : 'text-ink'
         }`}
       >
         {title}
-      </Tag>
+      </h2>
       {lead && (
         <p
-          className={`mt-5 text-lead font-sans ${centered ? 'max-w-2xl' : 'max-w-xl'} ${
+          className={`mt-5 max-w-xl text-lead font-sans ${
             tone === 'dark' ? 'text-mist' : 'text-muted'
           }`}
         >

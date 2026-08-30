@@ -5,7 +5,6 @@ const SURFACES = {
   cream: 'bg-cream text-ink',
   'cream-dark': 'bg-cream-dark text-ink',
   ink: 'surface-ink',
-  none: '',
 } as const
 
 /** One vertical rhythm for the whole site, so sections never drift apart. */
@@ -23,7 +22,6 @@ type Props = {
   size?: keyof typeof SIZES
   id?: string
   className?: string
-  'aria-labelledby'?: string
 }
 
 export default function Section({
@@ -32,10 +30,9 @@ export default function Section({
   size = 'md',
   id,
   className = '',
-  ...rest
 }: Props) {
   return (
-    <section id={id} className={`${SURFACES[surface]} ${SIZES[size]} ${className}`} {...rest}>
+    <section id={id} className={`${SURFACES[surface]} ${SIZES[size]} ${className}`}>
       {children}
     </section>
   )

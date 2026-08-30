@@ -5,8 +5,6 @@ const TONES = {
   light: 'text-accent-ink',
   /** On dark surfaces. */
   dark: 'text-accent',
-  /** Quieter variant when the label sits next to a coloured heading. */
-  muted: 'text-muted',
 } as const
 
 type Props = {
