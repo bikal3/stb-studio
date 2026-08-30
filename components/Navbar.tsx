@@ -6,8 +6,6 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { buttonClasses } from '@/components/ui/Button'
 
-// `/artists` is deliberately absent: the studio is a single artist, so the
-// roster page duplicates `/about`. It stays reachable from the footer.
 const NAV_LINKS = [
   { href: '/gallery', label: 'Gallery' },
   { href: '/services', label: 'Services' },

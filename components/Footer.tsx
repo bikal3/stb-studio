@@ -56,7 +56,6 @@ const socials = [
 
 const explore = [
   { href: '/gallery', label: 'Gallery' },
-  { href: '/artists', label: 'Artists' },
   { href: '/services', label: 'Services' },
   { href: '/about', label: 'About' },
   { href: '/aftercare', label: 'Aftercare' },
