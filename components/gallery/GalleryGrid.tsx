@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Lightbox from '@/components/gallery/Lightbox'
 import { aspectRatioOf } from '@/lib/imageDimensions'
 
-export type GalleryImage = { src: string; alt: string; type: string }
+type GalleryImage = { src: string; alt: string; type: string }
 
 type Props = {
   images: GalleryImage[]
