@@ -1,4 +1,4 @@
-import { whatsappUrl, instagramUrl, bookingMailtoUrl, BOOKING_EMAIL } from '@/lib/links'
+import { whatsappUrl, bookingMailtoUrl, BOOKING_EMAIL } from '@/lib/links'
 
 describe('whatsappUrl', () => {
   const originalEnv = process.env
@@ -20,13 +20,6 @@ describe('whatsappUrl', () => {
     process.env.NEXT_PUBLIC_WHATSAPP_NUMBER = '9779841234567'
     const url = whatsappUrl('Book a consult')
     expect(url).toContain('text=Book%20a%20consult')
-  })
-})
-
-describe('instagramUrl', () => {
-  it('returns the configured Instagram URL', () => {
-    process.env.NEXT_PUBLIC_INSTAGRAM_URL = 'https://www.instagram.com/stbstudio'
-    expect(instagramUrl()).toBe('https://www.instagram.com/stbstudio')
   })
 })
 

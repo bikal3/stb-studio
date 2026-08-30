@@ -5,9 +5,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { siteConfig, openingHours, ARTIST_NAME } from "@/lib/content";
 import {
-  instagramUrl,
-  facebookUrl,
-  tiktokUrl,
+  INSTAGRAM_URL,
+  FACEBOOK_URL,
+  TIKTOK_URL,
   BOOKING_EMAIL,
   STUDIO_PHONE,
 } from "@/lib/links";
@@ -90,7 +90,7 @@ const jsonLd = {
   },
   areaServed: { "@type": "City", name: "Kathmandu" },
   founder: { "@type": "Person", name: ARTIST_NAME },
-  sameAs: [instagramUrl(), facebookUrl(), tiktokUrl()].filter((url) => url !== "#"),
+  sameAs: [INSTAGRAM_URL, FACEBOOK_URL, TIKTOK_URL].filter((url) => url !== "#"),
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: [...openingHours.days],

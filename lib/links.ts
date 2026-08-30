@@ -12,17 +12,10 @@ export function whatsappUrl(message?: string): string {
   return `${base}?text=${encodeURIComponent(message)}`
 }
 
-export function instagramUrl(): string {
-  return process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? '#'
-}
-
-export function facebookUrl(): string {
-  return process.env.NEXT_PUBLIC_FACEBOOK_URL ?? '#'
-}
-
-export function tiktokUrl(): string {
-  return process.env.NEXT_PUBLIC_TIKTOK_URL ?? '#'
-}
+/** `#` when unset, so an unconfigured social link renders but goes nowhere. */
+export const INSTAGRAM_URL = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? '#'
+export const FACEBOOK_URL = process.env.NEXT_PUBLIC_FACEBOOK_URL ?? '#'
+export const TIKTOK_URL = process.env.NEXT_PUBLIC_TIKTOK_URL ?? '#'
 
 export function bookingMailtoUrl(
   name: string,
