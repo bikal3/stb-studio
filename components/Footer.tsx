@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from '@/components/ui/Container'
-import CurrentYear from '@/components/ui/CurrentYear'
 import {
   whatsappUrl,
   INSTAGRAM_URL,
@@ -165,7 +164,10 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-ink-soft pt-7 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-sans text-[0.75rem] tracking-wide text-mist">
-            © <CurrentYear /> {siteConfig.name}. All rights reserved.
+            {/* ponytail: build-time year. Goes stale only if the site sits
+                undeployed across New Year; CI rebuilds on every push to main.
+                Bring back a client-side clock if that ever stops being true. */}
+            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <p className="font-sans text-[0.75rem] tracking-wide text-mist">
             Artwork and photography may not be reproduced without permission.
