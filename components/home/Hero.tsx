@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { heroContent, siteConfig } from '@/lib/content'
 import { whatsappUrl } from '@/lib/links'
@@ -27,7 +27,6 @@ function shouldLoadVideo(): boolean {
 }
 
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null)
   const [src, setSrc] = useState<string | undefined>(undefined)
   const [ready, setReady] = useState(false)
 
@@ -50,7 +49,6 @@ export default function Hero() {
     <section className="surface-ink relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-6 py-32 text-center">
       {src && (
         <video
-          ref={videoRef}
           autoPlay
           muted
           loop
