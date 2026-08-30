@@ -57,10 +57,9 @@ export default function Navbar() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const overlayRef = useRef<HTMLDivElement>(null)
-  const triggerRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useRef<HTMLDialogElement>(null)
 
-  const close = useCallback(() => setOpen(false), [])
+  const close = useCallback(() => dialogRef.current?.close(), [])
 
   // The home page opens with a full-bleed video, so the bar floats over it
   // until the first scroll. Every other page needs the solid bar immediately.
@@ -73,43 +72,26 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Lock background scroll while the overlay is open.
+  // showModal() is what buys the Escape key, the focus trap, an inert page
+  // behind, and focus returning to the trigger on close — so none of that is
+  // written out here. Scroll lock is the one gap, handled in globals.css.
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
+    const dialog = dialogRef.current
+    if (!dialog) return
+    if (open && !dialog.open) dialog.showModal()
+    else if (!open && dialog.open) dialog.close()
   }, [open])
 
-  // Close on Escape, and keep Tab inside the overlay while it is open.
+  // Escape closes the dialog without going through React, so listen for the
+  // resulting close event to pull our own state back in step. React's onClose
+  // prop does not fire for it.
   useEffect(() => {
-    if (!open) return
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        close()
-        triggerRef.current?.focus()
-        return
-      }
-      if (e.key !== 'Tab') return
-
-      const focusable = overlayRef.current?.querySelectorAll<HTMLElement>('a[href], button')
-      if (!focusable?.length) return
-
-      const first = focusable[0]
-      const last = focusable[focusable.length - 1]
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault()
-        last.focus()
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault()
-        first.focus()
-      }
-    }
-
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open, close])
+    const dialog = dialogRef.current
+    if (!dialog) return
+    const syncClosed = () => setOpen(false)
+    dialog.addEventListener('close', syncClosed)
+    return () => dialog.removeEventListener('close', syncClosed)
+  }, [])
 
   const isActive = (href: string) => pathname === href
 
@@ -179,7 +161,6 @@ export default function Navbar() {
 
         {/* Mobile menu button */}
         <button
-          ref={triggerRef}
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
@@ -192,57 +173,55 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile full-screen overlay */}
-      {open && (
-        <div
-          ref={overlayRef}
-          className="surface-ink fixed inset-0 z-50 flex animate-fade flex-col md:hidden"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menu"
-        >
-          <div className="flex items-center justify-between border-b border-ink-soft px-6 py-3.5">
-            <Wordmark inverted />
-            <button
-              type="button"
-              onClick={() => {
-                close()
-                triggerRef.current?.focus()
-              }}
-              aria-label="Close menu"
-              className="-mr-2 flex h-11 w-11 items-center justify-center text-warm-white"
-            >
-              <MenuIcon open />
-            </button>
-          </div>
-
-          <div className="flex flex-1 flex-col justify-center gap-1 px-8">
-            {NAV_LINKS.map((l, i) => (
-              <Link
-                key={l.href}
-                href={l.href}
+      {/* Mobile full-screen overlay. Contents mount with the dialog so the
+          staggered link animation replays on every open. */}
+      <dialog
+        ref={dialogRef}
+        aria-label="Menu"
+        className="surface-ink m-0 hidden h-full max-h-none w-full max-w-none animate-fade flex-col border-0 p-0 open:flex md:open:hidden"
+      >
+        {open && (
+          <>
+            <div className="flex items-center justify-between border-b border-ink-soft px-6 py-3.5">
+              <Wordmark inverted />
+              <button
+                type="button"
                 onClick={close}
-                aria-current={isActive(l.href) ? 'page' : undefined}
-                style={{ animationDelay: `${60 + i * 45}ms` }}
-                className="flex animate-rise items-baseline gap-4 border-b border-ink-soft py-4 font-serif text-3xl font-light text-warm-white transition-colors hover:text-accent aria-[current=page]:text-accent"
+                aria-label="Close menu"
+                className="-mr-2 flex h-11 w-11 items-center justify-center text-warm-white"
               >
-                <span className="font-sans text-eyebrow text-mist" aria-hidden="true">
-                  0{i + 1}
-                </span>
-                {l.label}
+                <MenuIcon open />
+              </button>
+            </div>
+
+            <div className="flex flex-1 flex-col justify-center gap-1 px-8">
+              {NAV_LINKS.map((l, i) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={close}
+                  aria-current={isActive(l.href) ? 'page' : undefined}
+                  style={{ animationDelay: `${60 + i * 45}ms` }}
+                  className="flex animate-rise items-baseline gap-4 border-b border-ink-soft py-4 font-serif text-3xl font-light text-warm-white transition-colors hover:text-accent aria-[current=page]:text-accent"
+                >
+                  <span className="font-sans text-eyebrow text-mist" aria-hidden="true">
+                    0{i + 1}
+                  </span>
+                  {l.label}
+                </Link>
+              ))}
+              <Link
+                href="/book"
+                onClick={close}
+                style={{ animationDelay: '330ms' }}
+                className={`${buttonClasses({ variant: 'solid-light', size: 'lg' })} mt-8 animate-rise w-full`}
+              >
+                Book a Consult
               </Link>
-            ))}
-            <Link
-              href="/book"
-              onClick={close}
-              style={{ animationDelay: '330ms' }}
-              className={`${buttonClasses({ variant: 'solid-light', size: 'lg' })} mt-8 animate-rise w-full`}
-            >
-              Book a Consult
-            </Link>
-          </div>
-        </div>
-      )}
+            </div>
+          </>
+        )}
+      </dialog>
     </header>
   )
 }

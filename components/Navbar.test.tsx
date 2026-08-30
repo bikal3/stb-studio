@@ -39,7 +39,7 @@ describe('Navbar', () => {
   it('closes the menu on Escape', () => {
     render(<Navbar />)
     fireEvent.click(screen.getByRole('button', { name: /open menu/i }))
-    fireEvent.keyDown(window, { key: 'Escape' })
+    fireEvent.keyDown(document, { key: 'Escape' })
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 })

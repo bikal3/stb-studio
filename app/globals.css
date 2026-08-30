@@ -113,6 +113,13 @@
     color: var(--color-ink);
   }
 
+  /* A modal <dialog> takes the top layer and blocks clicks, but the page
+     behind it still scrolls. This is the one part of a modal the platform
+     does not cover. */
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+
   /* One focus treatment for the whole site. Sections rendered on a dark
      surface opt into the lighter ring by setting --focus-ring (see
      .surface-ink below), so the outline always clears 3:1 against its

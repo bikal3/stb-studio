@@ -35,8 +35,7 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
   const [currentIndex, setCurrentIndex] = useState(
     Math.max(0, Math.min(initialIndex, images.length - 1))
   )
-  const closeRef = useRef<HTMLButtonElement>(null)
-  const dialogRef = useRef<HTMLDivElement>(null)
+  const dialogRef = useRef<HTMLDialogElement>(null)
   const touchStartX = useRef<number | null>(null)
 
   const prev = useCallback(
@@ -48,52 +47,51 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
     [images.length]
   )
 
+  // Mounted only while open, so it opens once. Every close route — button,
+  // backdrop, Escape — ends at the element's own close(), and the resulting
+  // close event is what tells the parent to unmount us. Read through a ref so
+  // the parent's inline onClose does not re-run this and reopen the dialog.
+  const onCloseRef = useRef(onClose)
+  useEffect(() => {
+    onCloseRef.current = onClose
+  }, [onClose])
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+    // Guarded: showModal() throws on an already-open dialog, and StrictMode
+    // runs this effect twice. Unguarded, the throw skips the listener below.
+    if (!dialog.open) dialog.showModal()
+    const handleClose = () => onCloseRef.current()
+    dialog.addEventListener('close', handleClose)
+    return () => dialog.removeEventListener('close', handleClose)
+  }, [])
+
+  // Arrow keys are ours. Escape, the focus trap, an inert page behind, and
+  // focus returning to the thumbnail all come from showModal().
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowLeft') prev()
       if (e.key === 'ArrowRight') next()
-      if (e.key !== 'Tab') return
-
-      // Keep focus inside the viewer while it is open.
-      const focusable = dialogRef.current?.querySelectorAll<HTMLElement>('button')
-      if (!focusable?.length) return
-      const first = focusable[0]
-      const last = focusable[focusable.length - 1]
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault()
-        last.focus()
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault()
-        first.focus()
-      }
     }
     document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
-  }, [onClose, prev, next])
+  }, [prev, next])
 
-  useEffect(() => {
-    const previouslyFocused = document.activeElement as HTMLElement | null
-    document.body.style.overflow = 'hidden'
-    closeRef.current?.focus()
-    return () => {
-      document.body.style.overflow = ''
-      previouslyFocused?.focus?.()
-    }
-  }, [])
-
+  const close = () => dialogRef.current?.close()
   const current = images[currentIndex]
 
   const controlClass =
     'flex h-12 w-12 items-center justify-center border border-white/20 text-white/70 backdrop-blur-sm transition-colors duration-300 hover:border-white/60 hover:text-white'
 
   return (
-    <div
+    <dialog
       ref={dialogRef}
-      className="fixed inset-0 z-[60] flex animate-fade flex-col bg-ink/97"
+      aria-label="Image viewer"
+      className="m-0 hidden h-full max-h-none w-full max-w-none animate-fade flex-col border-0 bg-ink/97 p-0 open:flex"
       style={{ '--focus-ring': 'var(--color-accent)' } as React.CSSProperties}
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose()
+        if (e.target === e.currentTarget) close()
       }}
       onTouchStart={(e) => {
         touchStartX.current = e.touches[0]?.clientX ?? null
@@ -107,9 +105,6 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
         if (end < start) next()
         else prev()
       }}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Image viewer"
     >
       {/* Top bar: caption + counter + close */}
       <div className="flex items-center justify-between gap-4 px-4 py-4 sm:px-6">
@@ -121,11 +116,10 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
             {currentIndex + 1} / {images.length}
           </p>
           <button
-            ref={closeRef}
             type="button"
             onClick={(e) => {
               e.stopPropagation()
-              onClose()
+              close()
             }}
             className={controlClass}
             aria-label="Close"
@@ -151,7 +145,7 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
       <div
         className="relative flex min-h-0 flex-1 items-center justify-center px-2 pb-4 sm:px-6"
         onClick={(e) => {
-          if (e.target === e.currentTarget) onClose()
+          if (e.target === e.currentTarget) close()
         }}
       >
         <button
@@ -193,6 +187,6 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
       <p className="hidden px-6 pb-5 text-center font-sans text-[0.8125rem] text-white/45 sm:block">
         Use ← → to browse, Esc to close
       </p>
-    </div>
+    </dialog>
   )
 }

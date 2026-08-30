@@ -17,3 +17,25 @@ jest.mock('next/image', () => ({
     ...props
   }: Record<string, unknown>) => React.createElement('img', props),
 }))
+
+// jsdom parses <dialog> but implements none of its behaviour — showModal and
+// close are undefined. Stand in for the three parts the modal components rely
+// on: the open state, Escape, and the close event. jsdom already hides a
+// closed dialog, so queryByRole('dialog') stays a valid open/closed check.
+if (!HTMLDialogElement.prototype.showModal) {
+  type Shimmed = HTMLDialogElement & { _onEscape?: (e: KeyboardEvent) => void }
+
+  HTMLDialogElement.prototype.showModal = function (this: Shimmed) {
+    this.open = true
+    this._onEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') this.close()
+    }
+    document.addEventListener('keydown', this._onEscape)
+  }
+
+  HTMLDialogElement.prototype.close = function (this: Shimmed) {
+    if (this._onEscape) document.removeEventListener('keydown', this._onEscape)
+    this.open = false
+    this.dispatchEvent(new Event('close'))
+  }
+}
