@@ -98,29 +98,6 @@ export const services: ServiceCategory[] = [
     ],
   },
   {
-    category: "STB Objects",
-    items: [
-      {
-        name: "Custom Phone Cases",
-        description: "Hand-detailed tattoo-style design. Signature pieces only.",
-        duration: null,
-        price: "Rs 1,500 – 10,000",
-      },
-      {
-        name: "Mirror Artworks",
-        description: "Functional object turned into art piece.",
-        duration: null,
-        price: "Rs 3,000 – 30,000+",
-      },
-      {
-        name: "Object Drop Series",
-        description: "Limited edition sculptural artworks (pinecone mandala / experimental pieces)",
-        duration: null,
-        price: "Rs 10,000 – 45,000+",
-      },
-    ],
-  },
-  {
     category: "STB Custom Experience",
     items: [
       {
