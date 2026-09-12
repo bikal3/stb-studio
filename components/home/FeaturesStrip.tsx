@@ -12,21 +12,9 @@ const features = [
   },
   {
     num: '02',
-    title: 'Custom Engraving',
-    description:
-      'Your ideas, gently engraved on phone cases and mirrors. Quietly personal, made just for you — crafted only after your order.',
-  },
-  {
-    num: '03',
     title: 'Quality & Safety',
     description:
       'Where hygiene meets creativity. We maintain a clean, comfortable environment with sterilised equipment, while our artists thoughtfully work with your ideas to create satisfying results.',
-  },
-  {
-    num: '04',
-    title: 'STB Limited Drops',
-    description:
-      'Carefully detailed mandala artworks inspired by elements, energy and identity. Quietly expressive, each piece is created with meaning and intention. Strictly 1 of 1 — with title and authenticity note.',
   },
 ]
 
@@ -37,12 +25,12 @@ export default function FeaturesStrip() {
         <Reveal>
           <SectionHeading
             eyebrow="The Studio"
-            title="Four ways we work"
+            title="Two ways we work"
             lead="A tattoo sanctuary in Kathmandu — part studio, part workshop, part gallery."
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-px bg-warm-grey sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-px bg-warm-grey sm:grid-cols-2">
           {features.map((f, i) => (
             <Reveal
               key={f.title}
