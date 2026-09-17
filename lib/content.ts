@@ -13,22 +13,14 @@ export const siteConfig = {
 };
 
 export const openingHours = {
-  days: [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ] as const,
+  days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const,
   opens: "11:00 am",
   closes: "7:00 pm",
 };
 
 export const heroContent = {
   eyebrow: "Tattoo Studio · Kathmandu",
-  headline: ["Ink.", "Object.", "Identity."] as string[],
+  headline: ["Ink.", "Story.", "Identity."] as string[],
   subtext: "A home for self-expression, meaningful art and lasting stories.",
   cta: "Book a Consult",
 };
