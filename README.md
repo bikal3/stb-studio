@@ -2,7 +2,7 @@
 
 Portfolio and booking website for **STB Studio** — a custom tattoo studio in Kathmandu, Nepal, founded by Susmita Tamang Bhandari.
 
-**Live site:** [bikal3.github.io/stb-studio](https://bikal3.github.io/stb-studio)
+**Live site:** [ https://stbstudio.com.np](https://stbstudio.com.np)
 
 ---
 
