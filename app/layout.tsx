@@ -10,6 +10,7 @@ import {
   TIKTOK_URL,
   BOOKING_EMAIL,
   STUDIO_PHONE,
+  MAP_URL,
 } from "@/lib/links";
 
 const playfair = Playfair_Display({
@@ -85,9 +86,13 @@ const jsonLd = {
   currenciesAccepted: "NPR",
   address: {
     "@type": "PostalAddress",
+    streetAddress: siteConfig.street,
     addressLocality: "Kathmandu",
+    postalCode: "44600",
     addressCountry: "NP",
   },
+  geo: { "@type": "GeoCoordinates", latitude: 27.7233358, longitude: 85.3067363 },
+  hasMap: MAP_URL,
   areaServed: { "@type": "City", name: "Kathmandu" },
   founder: { "@type": "Person", name: ARTIST_NAME },
   sameAs: [INSTAGRAM_URL, FACEBOOK_URL, TIKTOK_URL].filter((url) => url !== "#"),

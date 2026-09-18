@@ -58,7 +58,7 @@ Because the site is a fully static export (no image server), images are optimise
 - To restyle the card, replace the PNG at the same size.
 - **`npm run build` verifies this.** `scripts/verify-export.mjs` resolves the `og:image`, `twitter:image`, `icon` and `canonical` URLs in the built HTML back to files in `out/`, and fails the build on a doubled basePath or a dangling link. It exists because the basePath bug above shipped: `NEXT_PUBLIC_BASE_PATH` is only set in CI, so a local build cannot reproduce it by hand.
 - `app/sitemap.ts` emits `out/sitemap.xml`. `app/robots.ts` emits `out/robots.txt`, served at `stbstudio.com.np/robots.txt`. The site runs on a custom apex domain, so no basePath is set and both land where crawlers look.
-- Structured data (`TattooParlor`) is inlined in `app/layout.tsx`. **Outstanding:** it carries no street address, because the studio's has not been supplied — adding one there and in the footer is the single biggest remaining local-SEO win.
+- Structured data (`TattooParlor`) is inlined in `app/layout.tsx`, with the street address, coordinates and `hasMap` pointing at the studio's Google Maps listing (`MAP_URL` in `lib/links.ts`).
 
 ---
 

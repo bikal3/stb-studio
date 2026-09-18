@@ -9,6 +9,7 @@ import {
   BOOKING_EMAIL,
   STUDIO_PHONE,
   STUDIO_PHONE_DISPLAY,
+  MAP_URL,
 } from '@/lib/links'
 import { siteConfig, openingHours } from '@/lib/content'
 
@@ -130,6 +131,14 @@ export default function Footer() {
           <div>
             <h2 className={columnHeading}>Visit</h2>
             <dl className="mt-6 flex flex-col gap-3.5 font-sans text-[0.9375rem] text-mist">
+              <div>
+                <dt className="sr-only">Address</dt>
+                <dd>
+                  <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className={quietLink}>
+                    {siteConfig.street}, {siteConfig.location}
+                  </a>
+                </dd>
+              </div>
               <div>
                 <dt className="sr-only">Opening hours</dt>
                 <dd>

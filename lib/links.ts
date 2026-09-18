@@ -12,6 +12,12 @@ export function whatsappUrl(message?: string): string {
   return `${base}?text=${encodeURIComponent(message)}`;
 }
 
+/** The studio's Google Maps listing, for "directions" links and structured data. */
+export const MAP_URL = "https://maps.app.goo.gl/t3GnFxZAFMDacN9g6";
+/** Keyless iframe embed. The query resolves to the same listing as MAP_URL. */
+export const MAP_EMBED_URL =
+  "https://maps.google.com/maps?q=STB%20Tattoo%20Studio%2C%20Dhara%20Galli%2C%20Kathmandu&output=embed";
+
 /** `#` when unset, so an unconfigured social link renders but goes nowhere. */
 export const INSTAGRAM_URL = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "#";
 export const FACEBOOK_URL = process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "#";

@@ -6,7 +6,7 @@ import SectionLabel from '@/components/SectionLabel'
 import Reveal from '@/components/ui/Reveal'
 import { buttonClasses, ButtonArrow } from '@/components/ui/Button'
 import { openingHours, siteConfig } from '@/lib/content'
-import { whatsappUrl, BOOKING_EMAIL } from '@/lib/links'
+import { whatsappUrl, BOOKING_EMAIL, MAP_URL, MAP_EMBED_URL } from '@/lib/links'
 
 const noopSubscribe = () => () => {}
 /** Monday-first index of the current weekday. Null while server-rendering, so
@@ -52,7 +52,14 @@ export default function OpenHours() {
               </a>
             </div>
 
-            <p className="mt-8 text-eyebrow uppercase font-sans text-mist">{siteConfig.location}</p>
+            <a
+              href={MAP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 self-start text-eyebrow uppercase font-sans text-mist transition-colors duration-300 hover:text-warm-white"
+            >
+              {siteConfig.street}, {siteConfig.location} — Directions
+            </a>
           </Reveal>
 
           <Reveal delay={120}>
@@ -87,6 +94,16 @@ export default function OpenHours() {
             </dl>
           </Reveal>
         </div>
+
+        <Reveal delay={200} className="mt-14">
+          <iframe
+            src={MAP_EMBED_URL}
+            title={`${siteConfig.name} on Google Maps`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="block aspect-[4/3] w-full border-0 sm:aspect-[21/9]"
+          />
+        </Reveal>
       </Container>
     </section>
   )

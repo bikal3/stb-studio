@@ -7,6 +7,7 @@ jest.mock('@/lib/links', () => ({
   INSTAGRAM_URL: 'https://www.instagram.com/stbstudio',
   FACEBOOK_URL: 'https://www.facebook.com/stbstudio',
   TIKTOK_URL: 'https://www.tiktok.com/@stbstudio',
+  MAP_URL: 'https://maps.app.goo.gl/t3GnFxZAFMDacN9g6',
 }))
 
 describe('Footer', () => {
@@ -18,6 +19,12 @@ describe('Footer', () => {
   it('renders location', () => {
     render(<Footer />)
     expect(screen.getByText('Kathmandu, Nepal')).toBeInTheDocument()
+  })
+
+  it('links the street address to Google Maps', () => {
+    render(<Footer />)
+    const link = screen.getByRole('link', { name: 'Dhara Galli, Kathmandu, Nepal' })
+    expect(link).toHaveAttribute('href', 'https://maps.app.goo.gl/t3GnFxZAFMDacN9g6')
   })
 
   it('renders Instagram link with correct href', () => {

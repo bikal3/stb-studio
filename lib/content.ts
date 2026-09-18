@@ -8,6 +8,7 @@ export const ARTIST_NAME = "Susmita Tamang Bhandari";
 export const siteConfig = {
   name: "STB Studio",
   location: "Kathmandu, Nepal",
+  street: "Dhara Galli",
   description: "A sanctuary for art and self-expression. Every tattoo is a story. Every piece, a companion for life.",
   url: "https://stbstudio.com.np",
 };
