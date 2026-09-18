@@ -72,7 +72,7 @@ export const services: ServiceCategory[] = [
       },
       {
         name: "Signature Session",
-        description: "Custom STB design · mandala · symbolic work",
+        description: "Custom STB design · mandala",
         duration: "2–4 hours",
         price: "Rs 8,000 – 18,000",
       },
