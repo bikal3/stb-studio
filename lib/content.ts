@@ -90,59 +90,6 @@ export const services: ServiceCategory[] = [
       },
     ],
   },
-  {
-    category: "STB Custom Experience",
-    items: [
-      {
-        name: "Design Consultation",
-        description:
-          "Personal concept creation (tattoo + object + identity). Waived if proceeding with tattoo or object order.",
-        duration: null,
-        price: "Rs 2,000 – 5,000",
-      },
-      {
-        name: "Signature Collab",
-        description: "You + artist co-create a design system: tattoo + matching object (case / mirror / art piece).",
-        duration: null,
-        price: "Rs 10,000 – 50,000+",
-      },
-    ],
-  },
-  {
-    category: "STB Limited Drops",
-    items: [
-      {
-        name: "🔥 IGNITION",
-        description: "Fire / Origin · Creation • Energy • Power",
-        duration: null,
-        price: "Rs 10,000 – 45,000+",
-      },
-      {
-        name: "🌑 OBSIDIAN",
-        description: "Earth / Shadow · Silence • Strength • Depth",
-        duration: null,
-        price: "Rs 10,000 – 45,000+",
-      },
-      {
-        name: "🌊 TIDAL",
-        description: "Water / Flow · Healing • Motion • Balance",
-        duration: null,
-        price: "Rs 10,000 – 45,000+",
-      },
-      {
-        name: "🩸 RITUAL",
-        description: "Blood / Intensity · Transformation • Emotion • Release",
-        duration: null,
-        price: "Rs 10,000 – 45,000+",
-      },
-      {
-        name: "☀️ HALO",
-        description: "Light / Sacred · Clarity • Elevation • Ascension",
-        duration: null,
-        price: "Rs 10,000 – 45,000+",
-      },
-    ],
-  },
 ];
 
 export const servicesPreview: ServiceItem[] = [
