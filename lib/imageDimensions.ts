@@ -40,7 +40,7 @@ const imageDimensions: Record<string, ImageDimensions> = {
   '/images/floral/IMG_8882.jpg': { width: 1320, height: 1287 },
   '/images/floral/IMG_8883.jpg': { width: 1320, height: 1278 },
   '/images/floral/IMG_8885.jpg': { width: 1320, height: 1622 },
-  '/images/logo-main.png': { width: 211, height: 231 },
+  '/images/logo-main.png': { width: 512, height: 512 },
   '/images/micro-realism/IMG_8808.jpg': { width: 1320, height: 1654 },
   '/images/micro-realism/IMG_8809.jpg': { width: 1320, height: 1637 },
   '/images/micro-realism/IMG_8812.jpg': { width: 1320, height: 1424 },
@@ -54,6 +54,8 @@ const imageDimensions: Record<string, ImageDimensions> = {
   '/images/old-school/IMG_8855.jpg': { width: 1320, height: 1305 },
   '/images/old-school/IMG_8856.jpg': { width: 1299, height: 1315 },
   '/images/profile-pic.png': { width: 515, height: 675 },
+  '/images/STB-black.png': { width: 1326, height: 1300 },
+  '/images/STB-white.png': { width: 1326, height: 1300 },
 }
 
 /** Falls back to a square so an unlisted image still reserves space. */
