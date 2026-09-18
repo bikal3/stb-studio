@@ -2,7 +2,7 @@
 
 Portfolio and booking website for **STB Studio** — a custom tattoo studio in Kathmandu, Nepal, founded by Susmita Tamang Bhandari.
 
-**Live site:** [ https://stbstudio.com.np](https://stbstudio.com.np)
+**Live site:** [stbstudio.com.np](https://stbstudio.com.np)
 
 ---
 
@@ -57,7 +57,7 @@ Because the site is a fully static export (no image server), images are optimise
   - The file convention resolves URLs as `metadataBase + basePath + filename`. Since `siteConfig.url` already ends in the basePath, that emitted a doubled `/stb-studio/stb-studio/…` which 404s. An absolute URL is never rewritten.
 - To restyle the card, replace the PNG at the same size.
 - **`npm run build` verifies this.** `scripts/verify-export.mjs` resolves the `og:image`, `twitter:image`, `icon` and `canonical` URLs in the built HTML back to files in `out/`, and fails the build on a doubled basePath or a dangling link. It exists because the basePath bug above shipped: `NEXT_PUBLIC_BASE_PATH` is only set in CI, so a local build cannot reproduce it by hand.
-- `app/sitemap.ts` emits `out/sitemap.xml`. `app/robots.ts` emits `out/robots.txt`, but note that on a project-page deploy it lands at `/stb-studio/robots.txt`, and crawlers only ever read `bikal3.github.io/robots.txt` — so it has no effect today. Submit the sitemap through Google Search Console instead. It starts working as written the moment the site moves to a custom domain.
+- `app/sitemap.ts` emits `out/sitemap.xml`. `app/robots.ts` emits `out/robots.txt`, served at `stbstudio.com.np/robots.txt`. The site runs on a custom apex domain, so no basePath is set and both land where crawlers look.
 - Structured data (`TattooParlor`) is inlined in `app/layout.tsx`. **Outstanding:** it carries no street address, because the studio's has not been supplied — adding one there and in the footer is the single biggest remaining local-SEO win.
 
 ---

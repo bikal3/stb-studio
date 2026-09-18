@@ -9,7 +9,7 @@ export const siteConfig = {
   name: "STB Studio",
   location: "Kathmandu, Nepal",
   description: "A sanctuary for art and self-expression. Every tattoo is a story. Every piece, a companion for life.",
-  url: "https://bikal3.github.io/stb-studio",
+  url: "https://stbstudio.com.np",
 };
 
 export const openingHours = {
