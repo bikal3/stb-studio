@@ -21,7 +21,7 @@ export const openingHours = {
 
 export const heroContent = {
   eyebrow: "Tattoo Studio · Kathmandu",
-  headline: ["Ink.", "Story.", "Identity."] as string[],
+  headline: ["Ink.", "Identity.", "Individuality."] as string[],
   subtext: "A home for self-expression, meaningful art and lasting stories.",
   cta: "Book a Consult",
 };
