@@ -82,7 +82,6 @@ const jsonLd = {
   telephone: STUDIO_PHONE,
   image: `${siteConfig.url}/opengraph-image.png`,
   logo: `${siteConfig.url}/icon.png`,
-  priceRange: "Rs 1,500 – Rs 60,000+",
   currenciesAccepted: "NPR",
   address: {
     "@type": "PostalAddress",

@@ -52,7 +52,6 @@ export type ServiceItem = {
   name: string;
   description: string;
   duration: string | null;
-  price: string;
 };
 
 export type ServiceCategory = {
@@ -68,25 +67,21 @@ export const services: ServiceCategory[] = [
         name: "Micro Session",
         description: "Minimal symbols · fine line · small placements",
         duration: "30–60 min",
-        price: "Rs 3,000 – 6,000",
       },
       {
         name: "Signature Session",
         description: "Custom STB design · mandala",
         duration: "2–4 hours",
-        price: "Rs 8,000 – 18,000",
       },
       {
         name: "Immersive Session",
         description: "Full concept design · large scale body art",
         duration: "Half day / Full day",
-        price: "Rs 20,000 – 60,000+",
       },
       {
         name: "Private Design Experience",
         description: "Full custom consultation + exclusive design creation. No repeat designs.",
         duration: null,
-        price: "From Rs 15,000",
       },
     ],
   },

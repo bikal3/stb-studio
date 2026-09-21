@@ -21,12 +21,6 @@ export default function ServiceCard({ service }: Props) {
           <p className="mt-3 text-eyebrow uppercase font-sans text-muted">{service.duration}</p>
         )}
       </div>
-
-      {service.price && (
-        <p className="shrink-0 font-sans text-[0.9375rem] font-medium text-accent-ink sm:pt-1 sm:text-right">
-          {service.price}
-        </p>
-      )}
     </article>
   )
 }

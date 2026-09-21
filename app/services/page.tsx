@@ -11,7 +11,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Full pricing menu for tattoo sessions and custom experiences at STB Studio, Kathmandu.',
+    'Tattoo sessions and custom design experiences at STB Studio, Kathmandu.',
   alternates: { canonical: '/services' },
 }
 
@@ -19,9 +19,9 @@ export default function ServicesPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Pricing"
+        eyebrow="What we offer"
         title="Services"
-        lead="Session rates are a guide — final pricing depends on size, placement and detail. Every custom piece starts with a consultation."
+        lead="Pricing depends on size, placement and detail, so every custom piece starts with a consultation."
       />
 
       {services.map((category, i) => (

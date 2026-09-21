@@ -33,14 +33,9 @@ export default function ServicesPreview() {
               <p className="mt-3 flex-1 font-sans text-[0.9375rem] leading-relaxed text-muted">
                 {service.description}
               </p>
-              <div className="mt-6 flex items-baseline justify-between gap-4 border-t border-warm-grey pt-4">
-                <span className="text-eyebrow uppercase font-sans text-muted">
-                  {service.duration ?? 'By enquiry'}
-                </span>
-                <span className="font-sans text-[0.9375rem] font-medium text-accent-ink">
-                  {service.price}
-                </span>
-              </div>
+              <p className="mt-6 border-t border-warm-grey pt-4 text-eyebrow uppercase font-sans text-muted">
+                {service.duration ?? 'By enquiry'}
+              </p>
             </Reveal>
           ))}
         </div>

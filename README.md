@@ -10,7 +10,7 @@ Portfolio and booking website for **STB Studio** — a custom tattoo studio in K
 
 STB Studio is a tattoo sanctuary in Kathmandu built around a single idea: every tattoo is a story, and every piece a companion for life. Alongside custom tattoos — fine line, floral, colour, blackwork, and micro realism — the studio makes collectible art objects and one-of-a-kind limited drops.
 
-This site is the studio's home on the web. It carries the full portfolio, introduces the artist, lays out the service menu and pricing, and gives visitors a direct path to book a consultation. It is designed to feel like the studio itself: calm, considered, and unmistakably its own — warm neutrals against ink black, generous typography, and imagery given room to breathe.
+This site is the studio's home on the web. It carries the full portfolio, introduces the artist, lays out the service menu, and gives visitors a direct path to book a consultation. It is designed to feel like the studio itself: calm, considered, and unmistakably its own — warm neutrals against ink black, generous typography, and imagery given room to breathe.
 
 The whole site is a static export, so it loads fast, costs nothing to host, and stays online without a server to maintain.
 
