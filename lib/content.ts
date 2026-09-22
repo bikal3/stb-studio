@@ -35,17 +35,10 @@ export const artistContent = {
   studioIntro:
     "A tattoo studio, Susmita believes, is a place where people arrive happy, grieving, excited or nervous — and leave with the same quiet smile. STB Studio was built to be that room.",
   bio: "Susmita Tamang Bhandari believes that a tattoo studio is a place where one can learn valuable life lessons, similar to a hospital. While hospitals show the harsh realities of life, tattoo studios offer a sense of acceptance. People from all walks of life visit tattoo studios - from those who are happy, to those who are grieving, excited, or nervous. Despite the initial emotions, there is a sense of satisfaction and a natural smile that emerges after getting a tattoo. Tattoos are magical. Contrary to popular belief, tattoo studios are often misunderstood as intimidating establishments, associated with unsavory characters, blaring music, and a run-down atmosphere. However, your perception will drastically change once you step into a reputable studio and immerse yourself in the unique experience it offers. Regardless of the size or meaning behind a tattoo, as long as it brings happiness and fulfills ones desires, the experience of creating art together is truly magical.",
-  philosophy:
-    "STB Studio is designed with a color scheme of black, white, and grey. Black symbolizes risk, white represents opportunities, and grey embodies magic. This signifies that one should not rush into opportunities or give up when faced with risks. Instead, take your time, embrace the process, and let the magic unfold.",
   sanctuaryQuote:
     "This place is my sanctuary. It's where my heart truly lies. It's where I thrive. Sharing my art with the world and bringing joy to others, I am not only chasing a dream, but living it.",
   visionStatement:
     "I launch my own studio, a sanctuary for artists like myself, where we can truly feel at home, free to create and express our passion. This is not just a place of work, but a place of belonging. It is now the moment to bring this vision to life in my hometown and establish deeper connections with my community than I have ever before.",
-};
-
-export const philosophyQuoteContent = {
-  quote: "Tattoos are magical. This is not just a place of work, but a place of belonging.",
-  attribution: "— Susmita Tamang Bhandari",
 };
 
 export type ServiceItem = {

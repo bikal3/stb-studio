@@ -24,7 +24,7 @@ The whole site is a static export, so it loads fast, costs nothing to host, and 
 | `/gallery`   | Full portfolio organised by tattoo style, with a filterable grid and lightbox                                                             |
 | `/artists`   | The artist behind the studio (linked from the footer, not the main nav — it would duplicate `/about` while STB is a single-artist studio) |
 | `/services`  | Full service menu                                                                                                                         |
-| `/about`     | Studio story and philosophy                                                                                                               |
+| `/about`     | Studio story                                                                                                                              |
 | `/book`      | Booking enquiry form                                                                                                                      |
 | `/aftercare` | Tattoo aftercare guide                                                                                                                    |
 

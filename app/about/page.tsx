@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = {
   title: 'About',
-  description: `Learn about ${ARTIST_NAME} and the philosophy behind STB Studio in Kathmandu.`,
+  description: `Learn about ${ARTIST_NAME} and the story behind STB Studio in Kathmandu.`,
   alternates: { canonical: '/about' },
 }
 
@@ -71,34 +71,6 @@ export default function AboutPage() {
               <p className={prose}>{artistContent.visionStatement}</p>
             </Reveal>
           </div>
-        </Container>
-      </Section>
-
-      {/* Philosophy — the three-colour idea, made visual. */}
-      <Section surface="ink">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              tone="dark"
-              eyebrow="Philosophy"
-              title="Black, white and grey"
-              lead={artistContent.philosophy}
-            />
-          </Reveal>
-
-          <dl className="mt-14 grid gap-px bg-ink-soft sm:grid-cols-3">
-            {[
-              { swatch: 'bg-ink border border-ink-soft', term: 'Black', desc: 'Risk' },
-              { swatch: 'bg-warm-white', term: 'White', desc: 'Opportunity' },
-              { swatch: 'bg-mist', term: 'Grey', desc: 'Magic' },
-            ].map((item, i) => (
-              <Reveal key={item.term} delay={i * 110} className="bg-ink p-8">
-                <span aria-hidden="true" className={`block h-16 w-16 ${item.swatch}`} />
-                <dt className="mt-6 font-serif text-h3 font-light text-warm-white">{item.term}</dt>
-                <dd className="mt-1 text-eyebrow uppercase font-sans text-accent">{item.desc}</dd>
-              </Reveal>
-            ))}
-          </dl>
         </Container>
       </Section>
 
