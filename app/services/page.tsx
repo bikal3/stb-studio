@@ -41,7 +41,7 @@ export default function ServicesPage() {
             </h2>
             <p className="mt-5 max-w-md text-lead font-sans text-mist">
               Book a design consultation to talk through your idea. The fee is waived if you go
-              ahead with the tattoo or object.
+              ahead with the tattoo.
             </p>
             <a
               href={whatsappUrl("I'd like to book a design consultation at STB Studio")}

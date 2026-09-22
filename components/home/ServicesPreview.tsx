@@ -13,7 +13,7 @@ export default function ServicesPreview() {
           <SectionHeading
             eyebrow="Services"
             title="What we offer"
-            lead="Three tattoo sessions to start from — plus objects, collaborations and limited drops on the full menu."
+            lead="Three tattoo sessions to start from — plus a private design experience on the full menu."
           />
         </Reveal>
 

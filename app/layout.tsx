@@ -26,7 +26,7 @@ const inter = Inter({
 });
 
 const TITLE = "STB Studio — Tattoo Studio, Kathmandu";
-const DESCRIPTION = `A tattoo sanctuary for art and self-expression. Custom tattoos, collectible art objects, and design experiences by ${ARTIST_NAME} in Kathmandu, Nepal.`;
+const DESCRIPTION = `A tattoo sanctuary for art and self-expression. Custom tattoos and design experiences by ${ARTIST_NAME} in Kathmandu, Nepal.`;
 
 // The share card is declared here by absolute URL rather than through the
 // `app/opengraph-image.*` file convention. That convention resolves image URLs
