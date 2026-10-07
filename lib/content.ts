@@ -33,7 +33,7 @@ export const artistContent = {
   disciplines: ["Fine Line", "Mandala", "Micro Realism", "Floral", "Blackwork"],
   // Condensed from `bio` below, for the home page introduction.
   studioIntro:
-    "A tattoo studio, Susmita believes, is a place where people arrive happy, grieving, excited or nervous — and leave with the same quiet smile. STB Studio was built to be that room.",
+    "A tattoo studio, Susmita believes, is a place where people arrive happy, grieving, excited or nervous, and leave with the same quiet smile. STB Studio was built to be that room.",
   bio: "Susmita Tamang Bhandari believes that a tattoo studio is a place where one can learn valuable life lessons, similar to a hospital. While hospitals show the harsh realities of life, tattoo studios offer a sense of acceptance. People from all walks of life visit tattoo studios - from those who are happy, to those who are grieving, excited, or nervous. Despite the initial emotions, there is a sense of satisfaction and a natural smile that emerges after getting a tattoo. Tattoos are magical. Contrary to popular belief, tattoo studios are often misunderstood as intimidating establishments, associated with unsavory characters, blaring music, and a run-down atmosphere. However, your perception will drastically change once you step into a reputable studio and immerse yourself in the unique experience it offers. Regardless of the size or meaning behind a tattoo, as long as it brings happiness and fulfills ones desires, the experience of creating art together is truly magical.",
   sanctuaryQuote:
     "This place is my sanctuary. It's where my heart truly lies. It's where I thrive. Sharing my art with the world and bringing joy to others, I am not only chasing a dream, but living it.",
@@ -90,9 +90,9 @@ export const aftercareInstructions: string[] = [
   "Keep your plastic wrap on the newly tattooed area for at least 1 hour.",
   "Clean it with water and pat dry once you unwrap the bandage.",
   "After two days, apply a very thin layer of aftercare balm. Apply twice a day.",
-  "Your ink will peel and scab — this is absolutely normal. Do not pick the scab; doing so risks harming yourself and your design.",
+  "Your ink will peel and scab. This is absolutely normal. Do not pick the scab; doing so risks harming yourself and your design.",
   "Do not swim or soak in a spa or bath for at least two weeks. Showering is fine, but do not scrub the tattoo.",
-  "Excess tattoo ink may stain linen — protect these items. Avoid direct sunlight.",
+  "Excess tattoo ink may stain linen, so protect these items. Avoid direct sunlight.",
   "If you have any questions or concerns about aftercare, please contact us.",
 ];
 

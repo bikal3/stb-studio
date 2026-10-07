@@ -58,7 +58,7 @@ export default function OpenHours() {
               rel="noopener noreferrer"
               className="mt-8 self-start text-eyebrow uppercase font-sans text-mist transition-colors duration-300 hover:text-warm-white"
             >
-              {siteConfig.street}, {siteConfig.location} — Directions
+              {siteConfig.street}, {siteConfig.location} (Directions)
             </a>
           </Reveal>
 

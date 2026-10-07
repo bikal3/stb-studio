@@ -71,7 +71,7 @@ export default function BookPage() {
 
             <div className="mt-10">
               <p className="font-sans text-[0.9375rem] text-muted">
-                In a hurry? Message the studio directly — open daily, {openingHours.opens} to{' '}
+                In a hurry? Message the studio directly. Open daily, {openingHours.opens} to{' '}
                 {openingHours.closes}.
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">

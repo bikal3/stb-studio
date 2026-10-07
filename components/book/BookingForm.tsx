@@ -50,7 +50,7 @@ export default function BookingForm() {
         <p className="font-serif text-h2 font-light italic text-ink">One last step.</p>
         <p className="mt-4 max-w-sm font-sans text-body text-muted">
           Your email app should have opened with the request filled in. It is not sent until you
-          press send there — then Susmita will reply within 24–48 hours.
+          press send there, and Susmita will reply within 24–48 hours.
         </p>
         <p className="mt-6 max-w-sm font-sans text-[0.9375rem] text-muted">
           Nothing opened? Reach the studio directly:
@@ -225,7 +225,7 @@ export default function BookingForm() {
       {/* Worth stating plainly: this form posts nowhere. Submitting composes a
           message in the visitor's own mail app, so no third party ever sees it. */}
       <p className="font-sans text-[0.8125rem] leading-relaxed text-muted">
-        Your details are never sent to a server — pressing send opens this request in your own email
+        Your details are never sent to a server; pressing send opens this request in your own email
         app, addressed to the studio. STB Studio uses them only to reply about your tattoo.
       </p>
     </form>

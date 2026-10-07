@@ -8,7 +8,7 @@ const features = [
     num: '01',
     title: 'Tattoos',
     description:
-      "Every tattoo tells a story. Whether it's your vision, your memory, or your favourite design, our artists bring it to life with creativity, precision, and care. Any style, any design — customized the way you want it.",
+      "Every tattoo tells a story. Whether it's your vision, your memory, or your favourite design, our artists bring it to life with creativity, precision, and care. Any style, any design, customized the way you want it.",
   },
   {
     num: '02',
@@ -26,7 +26,7 @@ export default function FeaturesStrip() {
           <SectionHeading
             eyebrow="The Studio"
             title="Two ways we work"
-            lead="A tattoo sanctuary in Kathmandu — part studio, part workshop, part gallery."
+            lead="A tattoo sanctuary in Kathmandu: part studio, part workshop, part gallery."
           />
         </Reveal>
 
