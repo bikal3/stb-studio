@@ -6,8 +6,8 @@ export const STUDIO_PHONE = "+9779762111193";
 export const STUDIO_PHONE_DISPLAY = "+977 9762111193";
 
 export function whatsappUrl(message?: string): string {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
-  const base = `https://wa.me/${number}`;
+  // wa.me takes the E.164 digits without the leading `+`.
+  const base = `https://wa.me/${STUDIO_PHONE.replace(/\D/g, "")}`;
   if (!message) return base;
   return `${base}?text=${encodeURIComponent(message)}`;
 }
