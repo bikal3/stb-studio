@@ -25,7 +25,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const TITLE = "STB Studio — Tattoo Studio, Kathmandu";
+const TITLE = "STB Studio | Tattoo Studio in Kathmandu";
 const DESCRIPTION = `A tattoo sanctuary for art and self-expression. Custom tattoos and design experiences by ${ARTIST_NAME} in Kathmandu, Nepal.`;
 
 // The share card is declared here by absolute URL rather than through the
@@ -37,13 +37,13 @@ const OG_IMAGE = {
   url: `${siteConfig.url}/opengraph-image.png`,
   width: 1200,
   height: 630,
-  alt: `${siteConfig.name} — tattoo studio in ${siteConfig.location}`,
+  alt: `${siteConfig.name}, a tattoo studio in ${siteConfig.location}`,
 };
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: TITLE,
-    template: "%s — STB Studio",
+    template: "%s | STB Studio",
   },
   description: DESCRIPTION,
   alternates: { canonical: "/" },

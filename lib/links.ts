@@ -31,7 +31,7 @@ export function bookingMailtoUrl(
   days: string,
   message: string,
 ): string {
-  const subject = `Tattoo Consultation Request — ${name}`;
+  const subject = `Tattoo Consultation Request from ${name}`;
   const body = [
     `Name: ${name}`,
     `Email: ${email}`,
