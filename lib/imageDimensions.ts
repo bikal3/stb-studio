@@ -54,8 +54,6 @@ const imageDimensions: Record<string, ImageDimensions> = {
   '/images/old-school/IMG_8855.jpg': { width: 1320, height: 1305 },
   '/images/old-school/IMG_8856.jpg': { width: 1299, height: 1315 },
   '/images/profile-pic.png': { width: 515, height: 675 },
-  '/images/STB-black.png': { width: 1326, height: 1300 },
-  '/images/STB-white.png': { width: 1326, height: 1300 },
 }
 
 /** Falls back to a square so an unlisted image still reserves space. */
