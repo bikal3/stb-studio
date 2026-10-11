@@ -1,6 +1,6 @@
 /**
  * The artist's name, in one place. It appears in page copy, page metadata,
- * structured data, and every gallery alt string — change it here and it
+ * structured data, and every gallery alt string. Change it here and it
  * propagates everywhere.
  */
 export const ARTIST_NAME = "Susmita Tamang Bhandari";

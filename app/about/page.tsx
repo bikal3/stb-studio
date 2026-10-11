@@ -33,7 +33,7 @@ export default function AboutPage() {
         lead={artistContent.pullQuote}
       />
 
-      {/* Story — portrait alongside the long-form bio so the text keeps a
+      {/* Story: portrait alongside the long-form bio so the text keeps a
           readable measure instead of running the full page width. */}
       <Section surface="white">
         <Container>

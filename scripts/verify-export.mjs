@@ -74,7 +74,7 @@ async function checkMetaAsset(html, pattern, label) {
     return
   }
   if (BASE_PATH && url.includes(`${BASE_PATH}${BASE_PATH}`)) {
-    failures.push(`${label}: basePath is doubled — ${url}`)
+    failures.push(`${label}: basePath is doubled: ${url}`)
     return
   }
   const file = toExportPath(url)
@@ -98,12 +98,12 @@ async function run() {
   await checkMetaAsset(html, /<link rel="icon" href="([^"]+)"/, 'icon')
 
   // The canonical points at the deployed origin, so it cannot be resolved to a
-  // file — but a doubled basePath is still detectable and always wrong.
+  // file, but a doubled basePath is still detectable and always wrong.
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1]
   if (!canonical) {
     failures.push('canonical: tag missing from out/index.html')
   } else if (BASE_PATH && canonical.includes(`${BASE_PATH}${BASE_PATH}`)) {
-    failures.push(`canonical: basePath is doubled — ${canonical}`)
+    failures.push(`canonical: basePath is doubled: ${canonical}`)
   }
 
   if (failures.length) {

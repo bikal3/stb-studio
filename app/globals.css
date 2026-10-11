@@ -17,8 +17,8 @@
   --color-mist: #a8a29a;
 
   /* ---- Accent -------------------------------------------------------- */
-  --color-accent: #c4a882; /* light-on-dark only — 7.7:1 on ink */
-  --color-accent-ink: #85683a; /* dark-on-light — 4.9:1 on warm-white */
+  --color-accent: #c4a882; /* light-on-dark only, 7.7:1 on ink */
+  --color-accent-ink: #85683a; /* dark-on-light, 4.9:1 on warm-white */
 
   /* ---- Fonts --------------------------------------------------------- */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;

@@ -34,10 +34,10 @@ async function run() {
   }
 
   // Refuse to strip the originals unless the optimised variants that replace
-  // them are actually present — otherwise a failed optimiser run would ship a
+  // them are actually present; otherwise a failed optimiser run would ship a
   // site with no images at all.
   if (!(await exists(VARIANTS))) {
-    console.warn('[prune-export] out/_opt/images missing — keeping originals')
+    console.warn('[prune-export] out/_opt/images missing, keeping originals')
     return
   }
 

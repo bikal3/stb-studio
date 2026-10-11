@@ -47,8 +47,8 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
     [images.length]
   )
 
-  // Mounted only while open, so it opens once. Every close route — button,
-  // backdrop, Escape — ends at the element's own close(), and the resulting
+  // Mounted only while open, so it opens once. Every close route (button,
+  // backdrop, Escape) ends at the element's own close(), and the resulting
   // close event is what tells the parent to unmount us. Read through a ref so
   // the parent's inline onClose does not re-run this and reopen the dialog.
   const onCloseRef = useRef(onClose)

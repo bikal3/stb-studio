@@ -73,7 +73,7 @@ export default function Navbar() {
   }, [])
 
   // showModal() is what buys the Escape key, the focus trap, an inert page
-  // behind, and focus returning to the trigger on close — so none of that is
+  // behind, and focus returning to the trigger on close, so none of that is
   // written out here. Scroll lock is the one gap, handled in globals.css.
   useEffect(() => {
     const dialog = dialogRef.current

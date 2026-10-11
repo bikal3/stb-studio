@@ -61,7 +61,7 @@ describe('Lightbox', () => {
   it('does not close when clicking the image area', () => {
     const onClose = jest.fn()
     render(<Lightbox images={images} initialIndex={0} onClose={onClose} />)
-    // The image container is a div inside the dialog — clicking it should not close
+    // The image container is a div inside the dialog; clicking it should not close
     const imageContainer = screen.getByAltText('Tattoo 1').closest('div')!
     fireEvent.click(imageContainer)
     expect(onClose).not.toHaveBeenCalled()

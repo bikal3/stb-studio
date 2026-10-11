@@ -39,7 +39,7 @@ export default function BookingForm() {
     setStatus('handed-off')
   }
 
-  // The form has no server behind it — it hands the request to the visitor's
+  // The form has no server behind it; it hands the request to the visitor's
   // own mail app. That can silently fail (no mail client configured, common on
   // mobile), so this step says what actually happened and offers a way through
   // rather than claiming the request was sent.

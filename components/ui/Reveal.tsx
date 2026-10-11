@@ -14,7 +14,7 @@ type Props = {
  * Fades content up as it scrolls into view. The hidden state lives in CSS
  * (`.reveal`) and is disabled under `prefers-reduced-motion` or when scripting
  * is off, so content is never permanently invisible. The visible flag is
- * written straight to the DOM rather than held in state — nothing else needs
+ * written straight to the DOM rather than held in state; nothing else needs
  * to re-render when an element appears.
  */
 export default function Reveal({ children, delay = 0, as: Tag = 'div', className = '' }: Props) {
